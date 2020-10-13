@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sfNHyC77LR491hqIzrTQ8+HXZI8aVJpHKpjoVYsdfN4FwtEFWCIFXhUUa6cGfgbCT+EaFJa29qwKH1GIDu53Kg==",
+  "dgSpecHash": "h5/5lXQTEINg6Szjft18yK/vw2KyGr6ANYWFPn/y6cVNnRxPxH8RM1TnTG1YeKcsLCqP4MAQJgzEGn93hYUupA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\01_WebAppplication.csproj",
+  "projectFilePath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\WebAppplication_01.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josel\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",

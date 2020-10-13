@@ -19,7 +19,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "_01_WebAppplication": {
+    "WebAppplication_01": {
       "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {

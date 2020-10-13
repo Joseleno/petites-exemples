@@ -12052,9 +12052,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\01_WebAppplication.csproj",
-      "projectName": "01_WebAppplication",
-      "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\01_WebAppplication.csproj",
+      "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\WebAppplication_01.csproj",
+      "projectName": "WebAppplication_01",
+      "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\WebAppplication_01.csproj",
       "packagesPath": "C:\\Users\\josel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\obj\\",
       "projectStyle": "PackageReference",

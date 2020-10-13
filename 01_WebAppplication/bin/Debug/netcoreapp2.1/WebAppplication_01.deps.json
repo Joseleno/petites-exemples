@@ -22,7 +22,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "01_WebAppplication/1.0.0": {
+      "WebAppplication_01/1.0.0": {
         "dependencies": {
           "BuildBundlerMinifier": "3.2.449",
           "Microsoft.AspNetCore.App": "2.1.1",
@@ -31,10 +31,10 @@
           "Microsoft.Web.LibraryManager.Build": "2.1.76"
         },
         "runtime": {
-          "01_WebAppplication.dll": {}
+          "WebAppplication_01.dll": {}
         },
         "compile": {
-          "01_WebAppplication.dll": {}
+          "WebAppplication_01.dll": {}
         }
       },
       "BuildBundlerMinifier/3.2.449": {},
@@ -3175,7 +3175,7 @@
     }
   },
   "libraries": {
-    "01_WebAppplication/1.0.0": {
+    "WebAppplication_01/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
