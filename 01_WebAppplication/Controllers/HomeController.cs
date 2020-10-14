@@ -10,9 +10,7 @@ namespace WebAppplication_01.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("")]
-        [Route("Init")]
-        [Route("Home/Init")]
+        
         public IActionResult Index()
         {
             return View();

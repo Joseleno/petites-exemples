@@ -13,7 +13,6 @@ C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\bin\Debug\netcor
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.csprojAssemblyReference.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.AssemblyInfoInputs.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.AssemblyInfo.cs
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.csproj.CoreCompileInputs.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.RazorAssemblyInfo.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.RazorAssemblyInfo.cs
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.TagHelpers.input.cache
@@ -36,3 +35,6 @@ C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcor
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.pdb
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.genruntimeconfig.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.csproj.CopyComplete
+C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\Razor\Views\Voiture\NouvelleVoiture.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\Razor\Views\Voiture\Index.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.csproj.CoreCompileInputs.cache
