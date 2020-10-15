@@ -6,21 +6,9 @@
       "library": "materialize@1.0.0",
       "destination": "wwwroot/lib/materialize/"
     },
-
     {
-      "provider": "cdnjs",
-      "library": "datepicker@0.6.5",
-      "destination": "wwwroot/"
-    },
-    {
-      "provider": "cdnjs",
-      "library": "angular.js@1.7.2",
-      "destination": "wwwroot/",
-      "files": [ "angular-csp.css", "angular-animate.js" ]
-    },
-    {
-      "library": "fullcalendar@3.10.2",
-      "destination": "wwwroot/lib/fullcalendar/"
+      "library": "font-awesome@5.15.1",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }

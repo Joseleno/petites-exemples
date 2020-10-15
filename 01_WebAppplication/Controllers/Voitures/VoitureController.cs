@@ -7,7 +7,7 @@ using WebAppplication_01.Models;
 
 namespace WebAppplication_01.Controllers.Voitures
 {
-    
+
 
     public class VoitureController : Controller
     {
@@ -19,9 +19,9 @@ namespace WebAppplication_01.Controllers.Voitures
         }
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Voitures.ToList());
         }
-
+        [HttpGet]
         public IActionResult Nouvellevoiture()
         {
             return View();

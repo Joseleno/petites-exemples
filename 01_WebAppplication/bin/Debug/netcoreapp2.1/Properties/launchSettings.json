@@ -3,7 +3,7 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/01_WebAppplication",
+      "applicationUrl": "http://localhost/WebAppplication_01",
       "sslPort": 0
     },
     "iisExpress": {
@@ -25,6 +25,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
+      "nativeDebugging": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }

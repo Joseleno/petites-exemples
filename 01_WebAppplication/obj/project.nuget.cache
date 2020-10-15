@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "nIdePRw2yXTFCsNE73YEjEmatyObDjNbcbq+VnrS+wVJ/+gmOpmJtSj0pzg25mTsGDEYVwxUMiNDeFWyMhDVaQ==",
+  "dgSpecHash": "vui35ltzezhGLRHiMXgkdScYycTTdNftIs3hoMJ9GMLFK3REF9jrfr0zwXTInppNyaKpleR8aRy+1cn7hfDu2Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\01_WebAppplication\\WebAppplication_01.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\josel\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",
@@ -73,7 +72,7 @@
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\2.1.1\\microsoft.aspnetcore.nodeservices.2.1.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.owin\\2.1.1\\microsoft.aspnetcore.owin.2.1.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.1.1\\microsoft.aspnetcore.razor.2.1.1.nupkg.sha512",
-    "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.2.0\\microsoft.aspnetcore.razor.design.2.2.0.nupkg.sha512",
+    "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.1.2\\microsoft.aspnetcore.razor.design.2.1.2.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\2.1.1\\microsoft.aspnetcore.razor.language.2.1.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.1.1\\microsoft.aspnetcore.razor.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore.responsecaching\\2.1.1\\microsoft.aspnetcore.responsecaching.2.1.1.nupkg.sha512",
@@ -203,6 +202,10 @@
     "C:\\Users\\josel\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\josel\\.nuget\\packages\\system.composition.attributedmodel\\1.4.1\\system.composition.attributedmodel.1.4.1.nupkg.sha512",
+    "C:\\Users\\josel\\.nuget\\packages\\system.composition.hosting\\1.4.1\\system.composition.hosting.1.4.1.nupkg.sha512",
+    "C:\\Users\\josel\\.nuget\\packages\\system.composition.runtime\\1.4.1\\system.composition.runtime.1.4.1.nupkg.sha512",
+    "C:\\Users\\josel\\.nuget\\packages\\system.composition.typedparts\\1.4.1\\system.composition.typedparts.1.4.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.data.sqlclient\\4.5.1\\system.data.sqlclient.4.5.1.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.diagnostics.contracts\\4.3.0\\system.diagnostics.contracts.4.3.0.nupkg.sha512",
@@ -285,16 +288,5 @@
     "C:\\Users\\josel\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Version du package détectée en dehors de la contrainte de dépendance : Microsoft.AspNetCore.App 2.1.1 nécessite Microsoft.AspNetCore.Razor.Design (>= 2.1.1 && < 2.2.0) alors que la version Microsoft.AspNetCore.Razor.Design 2.2.0 a été résolue.",
-      "libraryId": "Microsoft.AspNetCore.Razor.Design",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  "logs": []
 }
