@@ -74,8 +74,20 @@ namespace WebAppplication_01.Controllers.Voitures
             }
 
             return View(v);
-
         }
 
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var carro = _context.Voitures.FirstOrDefault(x => x.VoitureId == id);
+            
+            return View(carro);
+
+        }
     }
 }
