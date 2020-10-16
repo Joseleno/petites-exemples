@@ -43,15 +43,17 @@
                         @Html.DisplayFor(modelItem => item.Anne)
                     </td>
                     <td>
-                        <a asp-action="Actualizer" asp-route-id="@item.VoitureId" class="btn icon-edit-sign">
+                        <a asp-action="Actualizer" asp-route-id="@item.VoitureId" class="btn btn-info">
                             Actualizer
                         </a>
-                        <a asp-action="Details" asp-route-id="@item.VoitureId" >
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                        <a asp-action="Details" asp-route-id="@item.VoitureId"  class="btn btn-warning">
+                            Details
                         </a>
-                        <a asp-action="Supprimir" asp-route-id="@item.VoitureId" >
-                            <i class="icon-trash"></i>
+                        <a asp-action="Supprimir" asp-route-id="@item.VoitureId" class="btn btn-danger" >
+                            Supprimir
                         </a>
+                        
+
                     </td>
                 </tr>
             }

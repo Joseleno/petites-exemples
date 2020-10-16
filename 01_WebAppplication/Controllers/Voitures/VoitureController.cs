@@ -41,5 +41,41 @@ namespace WebAppplication_01.Controllers.Voitures
 
             return View(carro);
         }
+
+        [HttpGet]
+        public IActionResult Actualizer(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var carro = _context.Voitures.Find(id);
+
+            return View(carro);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Actualizer(int id, Voiture v)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Update(v);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(v);
+
+        }
+
     }
 }
