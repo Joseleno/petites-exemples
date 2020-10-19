@@ -40,3 +40,4 @@ C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcor
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\WebAppplication_01.csproj.CoreCompileInputs.cache
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\Razor\Views\Voiture\Actualizer.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\Razor\Views\Voiture\Details.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\Razor\Views\Voiture\Supprimir.cshtml.g.cs

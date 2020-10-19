@@ -56,7 +56,6 @@ namespace WebAppplication_01.Controllers.Voitures
 
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Actualizer(int id, Voiture v)
@@ -89,5 +88,36 @@ namespace WebAppplication_01.Controllers.Voitures
             return View(carro);
 
         }
+
+        [HttpGet]
+        public IActionResult Supprimir(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var carro = _context.Voitures.FirstOrDefault(x => x.VoitureId == id);
+
+            return View(carro);
+
+        }
+
+        [HttpPost, ActionName("Supprimir")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmerSupprimir(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var carro = _context.Voitures.FirstOrDefault(x => x.VoitureId == id);
+            _context.Remove(carro);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
+
     }
 }
