@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -31,29 +31,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Debut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priorite)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TacheId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TacheId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TacheId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Debut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priorite)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TacheId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TacheId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TacheId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
-</table>
+</table>*@
+
+@await Html.PartialAsync("_PrioriteHaut", Model)
+@await Html.PartialAsync("_PrioriteMoyenne", Model)
+@await Html.PartialAsync("_PrioriteBas", Model)

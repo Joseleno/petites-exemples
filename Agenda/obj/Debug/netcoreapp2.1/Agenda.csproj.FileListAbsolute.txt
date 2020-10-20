@@ -36,3 +36,6 @@ C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Agen
 C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Agenda.pdb
 C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Agenda.csproj.CopyComplete
 C:\Users\josel\source\repos\petites-exemples\Agenda\bin\Debug\netcoreapp2.1\web.config
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteHaut.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteMoyenne.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteBas.cshtml.g.cs
