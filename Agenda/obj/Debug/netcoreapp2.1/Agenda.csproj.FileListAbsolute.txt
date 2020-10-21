@@ -39,3 +39,6 @@ C:\Users\josel\source\repos\petites-exemples\Agenda\bin\Debug\netcoreapp2.1\web.
 C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteHaut.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteMoyenne.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Taches\_PrioriteBas.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PrioriteHaut\Default.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PrioriteBas\Default.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Agenda\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\PrioriteMoyenne\Default.cshtml.g.cs

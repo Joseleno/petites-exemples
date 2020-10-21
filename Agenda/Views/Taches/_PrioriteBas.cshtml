@@ -2,7 +2,7 @@
 
 @if (Model.Any(t => t.Priorite.Equals("Bas")))
 {
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">Bas priorité - @Model.Count(t => t.Priorite.Equals("Bas"))</div>
     <div class="panel-body">
         <table class="table">

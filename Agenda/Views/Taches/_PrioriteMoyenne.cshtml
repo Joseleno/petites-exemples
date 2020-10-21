@@ -2,8 +2,9 @@
 
 @if (Model.Any(t => t.Priorite.Equals("Moyenne")))
 {
-<div class="panel panel-default">
-    <div class="panel-heading">Moyenne priorité - @Model.Count(t => t.Priorite.Equals("Moyenne")) </div>
+<div class="panel panel-warning">
+    <div class="panel-heading">Moyenne priorité  <span class="badge">@Model.Count(t => t.Priorite.Equals("Moyenne")) </span></div>
+    
     <div class="panel-body">
         <table class="table">
             <thead>

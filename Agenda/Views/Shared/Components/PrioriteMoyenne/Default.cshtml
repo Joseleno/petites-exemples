@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Agenda.Models.Tache>
+
+
+<div class="panel panel-warning">
+    <div class="panel-heading">Moyenne Priotité <span class="badge"> @Model.Count()</span></div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Debut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Priorite)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Debut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Priorite)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.TacheId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.TacheId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.TacheId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
