@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Sondage.Models.Cryptocurrency>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Sondage Crypto</h2>
+
+<p>
+    <a asp-action="Create">Nouvelle crypto-monnaie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <div class="col-lg-6 well">
+        @await Component.InvokeAsync("Cryptocurrency")
+    </div>
+    <div></div>
+</div>
+
