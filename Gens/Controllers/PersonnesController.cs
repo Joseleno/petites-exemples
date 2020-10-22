@@ -18,6 +18,16 @@ namespace Gens.Controllers
             _context = context;
         }
 
+        public async Task<JsonResult> PersonneValidation(string courriel)
+        {
+            if(await _context.Gens.AnyAsync(p => p.Courriel.Equals(courriel)))
+            {
+                return Json("Personne déjà inscrite");
+            }
+
+            return Json(true);
+        }
+
         // GET: Personnes
         public async Task<IActionResult> Index()
         {

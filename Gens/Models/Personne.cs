@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Gens.Models
         [Required(ErrorMessage = "Champs requis")]
         [DataType(DataType.EmailAddress, ErrorMessage ="Courriel invalid")]
         [StringLength(80, ErrorMessage = "Seulement 80 caractères")]
+        [Remote("PersonneValidation", "Personnes")]
         public string Courriel { get; set; }
 
         [Required(ErrorMessage = "Champs requis")]
