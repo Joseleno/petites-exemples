@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josel\\source\\repos\\petites-exemples\\Agenda\\Agenda.csproj": {}
+    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Agenda\\Agenda.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josel\\source\\repos\\petites-exemples\\Agenda\\Agenda.csproj": {
+    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Agenda\\Agenda.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Agenda\\Agenda.csproj",
+        "projectUniqueName": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Agenda\\Agenda.csproj",
         "projectName": "Agenda",
-        "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Agenda\\Agenda.csproj",
+        "projectPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Agenda\\Agenda.csproj",
         "packagesPath": "C:\\Users\\josel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Agenda\\obj\\",
+        "outputPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Agenda\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josel\\AppData\\Roaming\\NuGet\\NuGet.Config",

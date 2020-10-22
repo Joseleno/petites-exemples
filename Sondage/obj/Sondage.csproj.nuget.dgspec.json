@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josel\\source\\repos\\petites-exemples\\Sondage\\Sondage.csproj": {}
+    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Sondage\\Sondage.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josel\\source\\repos\\petites-exemples\\Sondage\\Sondage.csproj": {
+    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Sondage\\Sondage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Sondage\\Sondage.csproj",
+        "projectUniqueName": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Sondage\\Sondage.csproj",
         "projectName": "Sondage",
-        "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Sondage\\Sondage.csproj",
+        "projectPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Sondage\\Sondage.csproj",
         "packagesPath": "C:\\Users\\josel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\Sondage\\obj\\",
+        "outputPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\Sondage\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josel\\AppData\\Roaming\\NuGet\\NuGet.Config",
