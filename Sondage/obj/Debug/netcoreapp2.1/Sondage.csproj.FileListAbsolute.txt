@@ -34,3 +34,5 @@ C:\Users\josel\source\repos\petites-exemples\Sondage\obj\Debug\netcoreapp2.1\Raz
 C:\Users\josel\source\repos\petites-exemples\Sondage\obj\Debug\netcoreapp2.1\Razor\Views\Cryptocurrencies\Index.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\Sondage\bin\Debug\netcoreapp2.1\web.config
 C:\Users\josel\source\repos\petites-exemples\Sondage\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Cryptocurrency\Default.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\Sondage\bin\Debug\netcoreapp2.1\libman.json
+C:\Users\josel\source\repos\petites-exemples\Sondage\obj\Debug\netcoreapp2.1\Razor\Views\Cryptocurrencies\_Graphique.cshtml.g.cs

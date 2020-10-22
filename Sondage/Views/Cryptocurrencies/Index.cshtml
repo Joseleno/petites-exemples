@@ -7,38 +7,82 @@
 <h2>Sondage Crypto</h2>
 
 <p>
-    <a asp-action="Create">Nouvelle crypto-monnaie</a>
+    <a asp-action="Create" class="btn btn-primary">Nouvelle crypto-monnaie</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantite)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantite)
-            </td>
-            
-        </tr>
-}
-    </tbody>
-</table>
+
 <div>
     <div class="col-lg-6 well">
         @await Component.InvokeAsync("Cryptocurrency")
     </div>
-    <div></div>
+    <div class="col-lg-6">
+        <partial name="_Graphique" />
+    </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+
+    function GetCrypto(info) {
+        var quantite = 0;
+        var cryptos = [];
+
+        while (quantite < info.length) {
+            cryptos.push(info[quantite].nom);
+            quantite++;
+        }
+        return cryptos;
+    }
+
+    function GetQuantites(info) {
+        var quantite = 0;
+        var valeurs = [];
+
+        while (quantite < info.length) {
+            valeurs.push(info[quantite].quantite);
+            quantite++;
+        }
+        return valeurs;
+    }
+
+    function GetCouleurs(qtd) {
+        var couleurs = [];
+
+        while (qtd > 0) {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+
+            couleurs.push("rgb(" + r + "," + g + "," + r + ")");
+
+            qtd--;
+        }
+        return couleurs;
+    }
+
+    
+
+    $.ajax({
+        type: "GET",
+        url: "Cryptocurrencies/GenererGraphique",
+        success: function (info) {
+            new Chart(document.getElementById("graphique"), {
+                type: 'pie',
+                data: {
+                    labels: GetCrypto(info),
+                    datasets: [{
+                        labels: "Quantité",
+                        borderWidth: 2,
+                        backgroundColor: GetCouleurs(info.length),
+                        data: GetQuantites(info)
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Quantité pour chaque crypto"
+                    }
+                }
+            });
+        }
+    });
+</script>
 

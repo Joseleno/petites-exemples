@@ -38,7 +38,11 @@ namespace Sondage.Controllers
             }
 
             return RedirectToAction(nameof(Index));
-            
+        }
+
+        public JsonResult GenererGraphique()
+        {
+            return Json(_context.Cryptocurrency.Select(x => new { x.Nom, x.Quantite }));
         }
 
         // GET: Cryptocurrencies/Create
