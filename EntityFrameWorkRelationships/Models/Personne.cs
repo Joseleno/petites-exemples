@@ -12,6 +12,6 @@ namespace EntityFrameWorkRelationships.Models
 
         public DateTime DateNaissance { get; set; }
         
-        public double poids { get; set; }
+        public double? Poids { get; set; }
     }
 }

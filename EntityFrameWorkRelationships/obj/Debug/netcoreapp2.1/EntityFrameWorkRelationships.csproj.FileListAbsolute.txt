@@ -26,3 +26,11 @@ C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\De
 C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.RazorTargetAssemblyInfo.cache
 C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.RazorTargetAssemblyInfo.cs
 C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.genruntimeconfig.cache
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\bin\Debug\netcoreapp2.1\EntityFrameWorkRelationships.pdb
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\bin\Debug\netcoreapp2.1\EntityFrameWorkRelationships.Views.dll
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\bin\Debug\netcoreapp2.1\EntityFrameWorkRelationships.Views.pdb
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.csproj.CoreCompileInputs.cache
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.Views.pdb
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.dll
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.pdb
+C:\Users\josel\source\repos\petites-exemples\EntityFrameWorkRelationships\obj\Debug\netcoreapp2.1\EntityFrameWorkRelationships.csproj.CopyComplete
