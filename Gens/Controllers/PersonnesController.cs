@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gens.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Gens.Controllers
 {
@@ -20,10 +21,14 @@ namespace Gens.Controllers
 
         public async Task<JsonResult> PersonneValidation(string courriel)
         {
-            if(await _context.Gens.AnyAsync(p => p.Courriel.Equals(courriel)))
-            {
-                return Json("Personne déjà inscrite");
-            }
+            var count = _context.Gens.Count(c => c.Courriel.Equals(courriel));
+            
+            if (await _context.Gens.AnyAsync(p => p.Courriel.Equals(courriel)) && count < 1)
+                {
+                    return Json("Personne déjà inscrite");
+                }
+            
+            
 
             return Json(true);
         }
@@ -32,24 +37,6 @@ namespace Gens.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Gens.ToListAsync());
-        }
-
-        // GET: Personnes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var personne = await _context.Gens
-                .FirstOrDefaultAsync(m => m.PersonneId == id);
-            if (personne == null)
-            {
-                return NotFound();
-            }
-
-            return View(personne);
         }
 
         // GET: Personnes/Create

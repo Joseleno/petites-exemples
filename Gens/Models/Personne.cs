@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gens.Validation;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,7 @@ namespace Gens.Models
 
         [Required(ErrorMessage = "Champs requis")]
         [Range(1,100, ErrorMessage = "Jusqu'à 100")]
+        [Adulte]
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Champs requis")]
@@ -26,7 +28,7 @@ namespace Gens.Models
         [Required(ErrorMessage = "Champs requis")]
         [DataType(DataType.EmailAddress, ErrorMessage ="Courriel invalid")]
         [StringLength(80, ErrorMessage = "Seulement 80 caractères")]
-        [Remote("PersonneValidation", "Personnes")]
+        [Remote(action:"PersonneValidation", controller:"Personnes")]
         public string Courriel { get; set; }
 
         [Required(ErrorMessage = "Champs requis")]
