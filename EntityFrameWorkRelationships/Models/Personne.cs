@@ -13,5 +13,8 @@ namespace EntityFrameWorkRelationships.Models
         public DateTime DateNaissance { get; set; }
         
         public double? Poids { get; set; }
+
+        public int? AdresseId { get; set; }
+        public Adresse Adresse { get; set; }
     }
 }
