@@ -13,6 +13,6 @@ namespace EntityFrameWorkRelationships.Models
         public string Ville { get; set; }
         public string CodePostal { get; set; }
 
-        public Personne Personne { get; set; }
+        public ICollection<Personne> Personnes { get; set; }
     }
 }

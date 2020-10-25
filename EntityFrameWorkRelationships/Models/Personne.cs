@@ -14,7 +14,10 @@ namespace EntityFrameWorkRelationships.Models
         
         public double? Poids { get; set; }
 
-        public int? AdresseId { get; set; }
+        public int AdresseId { get; set; }
         public Adresse Adresse { get; set; }
+
+        public int? TelephoneId { get; set; }
+        public Telephone Telephone { get; set; }
     }
 }

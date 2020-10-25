@@ -58,7 +58,7 @@ namespace EntityFrameWorkRelationships.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AdresseId");
+                    b.Property<int>("AdresseId");
 
                     b.Property<DateTime>("DateNaissance")
                         .HasColumnName("DateNaissance")
@@ -75,20 +75,46 @@ namespace EntityFrameWorkRelationships.Migrations
                         .HasColumnName("Poids")
                         .HasColumnType("decimal(5,2)");
 
+                    b.Property<int?>("TelephoneId");
+
                     b.HasKey("PersonneId");
 
-                    b.HasIndex("AdresseId")
+                    b.HasIndex("AdresseId");
+
+                    b.HasIndex("TelephoneId")
                         .IsUnique()
-                        .HasFilter("[AdresseId] IS NOT NULL");
+                        .HasFilter("[TelephoneId] IS NOT NULL");
 
                     b.ToTable("Personne");
+                });
+
+            modelBuilder.Entity("EntityFrameWorkRelationships.Models.Telephone", b =>
+                {
+                    b.Property<int>("TelephoneId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnName("Numero")
+                        .HasColumnType("nvarchar")
+                        .HasMaxLength(10);
+
+                    b.HasKey("TelephoneId");
+
+                    b.ToTable("Telephone");
                 });
 
             modelBuilder.Entity("EntityFrameWorkRelationships.Models.Personne", b =>
                 {
                     b.HasOne("EntityFrameWorkRelationships.Models.Adresse", "Adresse")
+                        .WithMany("Personnes")
+                        .HasForeignKey("AdresseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EntityFrameWorkRelationships.Models.Telephone", "Telephone")
                         .WithOne("Personne")
-                        .HasForeignKey("EntityFrameWorkRelationships.Models.Personne", "AdresseId");
+                        .HasForeignKey("EntityFrameWorkRelationships.Models.Personne", "TelephoneId");
                 });
 #pragma warning restore 612, 618
         }

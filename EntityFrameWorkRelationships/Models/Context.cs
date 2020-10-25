@@ -41,7 +41,6 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<Personne>().ToTable("Personne");
 
-
             modelBuilder.Entity<Adresse>()
                 .HasKey(x => x.AdresseId);
 
@@ -68,13 +67,25 @@ namespace EntityFrameWorkRelationships.Models
                 .HasMaxLength(8)
                 .IsRequired();
 
-            modelBuilder.Entity<Personne>().HasOne(x => x.Adresse).WithOne(x => x.Personne).HasForeignKey<Personne>(x => x.AdresseId);
+            modelBuilder.Entity<Adresse>().ToTable("Adresse");
 
-            modelBuilder.Entity<Adresse>().HasOne(x => x.Personne).WithOne(x => x.Adresse);
+            modelBuilder.Entity<Telephone>()
+               .HasKey(x => x.TelephoneId);
+
+            modelBuilder.Entity<Telephone>()
+                .Property(x => x.Numero).HasColumnName("Numero")
+                .HasColumnType("nvarchar")
+                .HasMaxLength(10)
+                .IsRequired();
+
+            modelBuilder.Entity<Personne>().HasOne(p => p.Adresse).WithMany(p => p.Personnes).HasForeignKey(p => p.AdresseId);
+
+            modelBuilder.Entity<Adresse>().HasMany(a => a.Personnes).WithOne(a => a.Adresse);
+
+            modelBuilder.Entity<Personne>().HasOne(x => x.Telephone).WithOne(x => x.Personne).HasForeignKey<Personne>(x => x.TelephoneId);
+
+            modelBuilder.Entity<Telephone>().HasOne(x => x.Personne).WithOne(x => x.Telephone);
 
         }
-
-
-
     }
 }
