@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameWorkRelationships.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201025043700_OneToManyMigration")]
-    partial class OneToManyMigration
+    [Migration("20201027012627_ManyToManyMigration")]
+    partial class ManyToManyMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,36 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.ToTable("Personne");
                 });
 
+            modelBuilder.Entity("EntityFrameWorkRelationships.Models.PersonneProfession", b =>
+                {
+                    b.Property<int>("PersonneId");
+
+                    b.Property<int>("ProfessionId");
+
+                    b.Property<decimal?>("Salaire")
+                        .HasColumnName("Salaire")
+                        .HasColumnType("decimal(5,2)");
+
+                    b.HasKey("PersonneId", "ProfessionId");
+
+                    b.HasIndex("ProfessionId");
+
+                    b.ToTable("PersonneProfession");
+                });
+
+            modelBuilder.Entity("EntityFrameWorkRelationships.Models.Profession", b =>
+                {
+                    b.Property<int>("ProfessionId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("ProfessionId");
+
+                    b.ToTable("Profession");
+                });
+
             modelBuilder.Entity("EntityFrameWorkRelationships.Models.Telephone", b =>
                 {
                     b.Property<int>("TelephoneId")
@@ -117,6 +147,19 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.HasOne("EntityFrameWorkRelationships.Models.Telephone", "Telephone")
                         .WithOne("Personne")
                         .HasForeignKey("EntityFrameWorkRelationships.Models.Personne", "TelephoneId");
+                });
+
+            modelBuilder.Entity("EntityFrameWorkRelationships.Models.PersonneProfession", b =>
+                {
+                    b.HasOne("EntityFrameWorkRelationships.Models.Personne", "Personne")
+                        .WithMany("PersonneProfessions")
+                        .HasForeignKey("PersonneId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EntityFrameWorkRelationships.Models.Profession", "Profession")
+                        .WithMany("PersonneProfessions")
+                        .HasForeignKey("ProfessionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

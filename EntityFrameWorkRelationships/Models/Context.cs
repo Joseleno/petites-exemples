@@ -78,6 +78,12 @@ namespace EntityFrameWorkRelationships.Models
                 .HasMaxLength(10)
                 .IsRequired();
 
+            modelBuilder.Entity<PersonneProfession>()
+                .Property(x => x.Salaire)
+                .HasColumnName("Salaire")
+                .HasColumnType("decimal(5,2)")
+                .IsRequired(false);
+
             modelBuilder.Entity<Personne>().HasOne(p => p.Adresse).WithMany(p => p.Personnes).HasForeignKey(p => p.AdresseId);
 
             modelBuilder.Entity<Adresse>().HasMany(a => a.Personnes).WithOne(a => a.Adresse);
@@ -86,6 +92,11 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<Telephone>().HasOne(x => x.Personne).WithOne(x => x.Telephone);
 
+            modelBuilder.Entity<PersonneProfession>().HasKey(x => new { x.PersonneId, x.ProfessionId });
+
+            modelBuilder.Entity<PersonneProfession>().HasOne(x => x.Personne).WithMany(x => x.PersonneProfessions).HasForeignKey(x=>x.PersonneId);
+
+            modelBuilder.Entity<PersonneProfession>().HasOne(x => x.Profession).WithMany(x => x.PersonneProfessions).HasForeignKey(x => x.ProfessionId);
         }
     }
 }

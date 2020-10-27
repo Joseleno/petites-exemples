@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EntityFrameWorkRelationships.Migrations
 {
-    public partial class OneToManyMigration : Migration
+    public partial class ManyToManyMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,19 @@ namespace EntityFrameWorkRelationships.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Adresse", x => x.AdresseId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Profession",
+                columns: table => new
+                {
+                    ProfessionId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Profession", x => x.ProfessionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,6 +79,31 @@ namespace EntityFrameWorkRelationships.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PersonneProfession",
+                columns: table => new
+                {
+                    PersonneId = table.Column<int>(nullable: false),
+                    ProfessionId = table.Column<int>(nullable: false),
+                    Salaire = table.Column<decimal>(type: "decimal(5,2)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonneProfession", x => new { x.PersonneId, x.ProfessionId });
+                    table.ForeignKey(
+                        name: "FK_PersonneProfession_Personne_PersonneId",
+                        column: x => x.PersonneId,
+                        principalTable: "Personne",
+                        principalColumn: "PersonneId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PersonneProfession_Profession_ProfessionId",
+                        column: x => x.ProfessionId,
+                        principalTable: "Profession",
+                        principalColumn: "ProfessionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Personne_AdresseId",
                 table: "Personne",
@@ -77,12 +115,23 @@ namespace EntityFrameWorkRelationships.Migrations
                 column: "TelephoneId",
                 unique: true,
                 filter: "[TelephoneId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonneProfession_ProfessionId",
+                table: "PersonneProfession",
+                column: "ProfessionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "PersonneProfession");
+
+            migrationBuilder.DropTable(
                 name: "Personne");
+
+            migrationBuilder.DropTable(
+                name: "Profession");
 
             migrationBuilder.DropTable(
                 name: "Adresse");

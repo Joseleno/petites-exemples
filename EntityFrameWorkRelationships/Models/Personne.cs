@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace EntityFrameWorkRelationships.Models
@@ -19,5 +20,7 @@ namespace EntityFrameWorkRelationships.Models
 
         public int? TelephoneId { get; set; }
         public Telephone Telephone { get; set; }
+
+        public ICollection<PersonneProfession> PersonneProfessions { get; set; }
     }
 }
