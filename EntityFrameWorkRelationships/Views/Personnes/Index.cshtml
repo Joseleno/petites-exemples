@@ -1,0 +1,66 @@
+﻿@model X.PagedList.IPagedList<EntityFrameWorkRelationships.Models.Personne>
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Personnes" asp-action="Index" method="post">
+    <input class="form-control" name="txChercher" />
+    <button type="submit" class="btn btn-primary">Chercher</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                DateNaissance
+            </th>
+            <th>
+                Poids
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Telephone
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateNaissance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Poids)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adresse.CodePostal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone.Numero)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonneId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PersonneId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PersonneId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

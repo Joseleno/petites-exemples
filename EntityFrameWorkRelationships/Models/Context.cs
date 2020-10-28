@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using EntityFrameWorkRelationships.Models;
 
 namespace EntityFrameWorkRelationships.Models
 {
@@ -23,7 +24,7 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<Personne>()
                 .Property(x => x.Nom).HasColumnName("Nom")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .HasMaxLength(120)
                 .IsRequired();
 
@@ -51,19 +52,19 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<Adresse>()
                 .Property(x => x.Rue).HasColumnName("Rue")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .HasMaxLength(200)
                 .IsRequired();
 
             modelBuilder.Entity<Adresse>()
                 .Property(x => x.Ville).HasColumnName("Ville")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .HasMaxLength(100)
                 .IsRequired();
 
             modelBuilder.Entity<Adresse>()
                 .Property(x => x.CodePostal).HasColumnName("CodePostal")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .HasMaxLength(8)
                 .IsRequired();
 
@@ -74,7 +75,7 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<Telephone>()
                 .Property(x => x.Numero).HasColumnName("Numero")
-                .HasColumnType("nvarchar")
+                .HasColumnType("text")
                 .HasMaxLength(10)
                 .IsRequired();
 
@@ -98,5 +99,13 @@ namespace EntityFrameWorkRelationships.Models
 
             modelBuilder.Entity<PersonneProfession>().HasOne(x => x.Profession).WithMany(x => x.PersonneProfessions).HasForeignKey(x => x.ProfessionId);
         }
+
+        public DbSet<EntityFrameWorkRelationships.Models.PersonneProfession> PersonneProfession { get; set; }
+
+        public DbSet<EntityFrameWorkRelationships.Models.Adresse> Adresse { get; set; }
+
+        public DbSet<EntityFrameWorkRelationships.Models.Profession> Profession { get; set; }
+
+        public DbSet<EntityFrameWorkRelationships.Models.Telephone> Telephone { get; set; }
     }
 }

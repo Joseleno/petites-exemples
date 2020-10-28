@@ -1,0 +1,48 @@
+﻿@model EntityFrameWorkRelationships.Models.Adresse
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Adresse</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumeroCivique" class="control-label"></label>
+                <input asp-for="NumeroCivique" class="form-control" />
+                <span asp-validation-for="NumeroCivique" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rue" class="control-label"></label>
+                <input asp-for="Rue" class="form-control" />
+                <span asp-validation-for="Rue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ville" class="control-label"></label>
+                <input asp-for="Ville" class="form-control" />
+                <span asp-validation-for="Ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodePostal" class="control-label"></label>
+                <input asp-for="CodePostal" class="form-control" />
+                <span asp-validation-for="CodePostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

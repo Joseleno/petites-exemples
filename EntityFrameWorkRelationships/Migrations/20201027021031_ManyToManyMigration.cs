@@ -15,9 +15,9 @@ namespace EntityFrameWorkRelationships.Migrations
                     AdresseId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Numero = table.Column<int>(type: "int", nullable: false),
-                    Rue = table.Column<string>(type: "nvarchar", maxLength: 200, nullable: false),
-                    Ville = table.Column<string>(type: "nvarchar", maxLength: 100, nullable: false),
-                    CodePostal = table.Column<string>(type: "nvarchar", maxLength: 8, nullable: false)
+                    Rue = table.Column<string>(type: "text", maxLength: 200, nullable: false),
+                    Ville = table.Column<string>(type: "text", maxLength: 100, nullable: false),
+                    CodePostal = table.Column<string>(type: "text", maxLength: 8, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace EntityFrameWorkRelationships.Migrations
                 {
                     TelephoneId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Numero = table.Column<string>(type: "nvarchar", maxLength: 10, nullable: false)
+                    Numero = table.Column<string>(type: "text", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,7 +56,7 @@ namespace EntityFrameWorkRelationships.Migrations
                 {
                     PersonneId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nom = table.Column<string>(type: "nvarchar", maxLength: 120, nullable: false),
+                    Nom = table.Column<string>(type: "text", maxLength: 120, nullable: false),
                     DateNaissance = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Poids = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
                     AdresseId = table.Column<int>(nullable: false),

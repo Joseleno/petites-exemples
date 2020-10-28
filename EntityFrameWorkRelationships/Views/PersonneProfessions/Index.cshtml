@@ -1,0 +1,50 @@
+﻿@model X.PagedList.IPagedList<EntityFrameWorkRelationships.Models.PersonneProfession>
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Personne
+            </th>
+            <th>
+               Profession
+            </th>
+            <th>
+               Salaire
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Personne.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profession.ProfessionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salaire)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonneId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProfessionId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProfessionId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameWorkRelationships.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201027012627_ManyToManyMigration")]
+    [Migration("20201027021031_ManyToManyMigration")]
     partial class ManyToManyMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.Property<string>("CodePostal")
                         .IsRequired()
                         .HasColumnName("CodePostal")
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("text")
                         .HasMaxLength(8);
 
                     b.Property<int>("NumeroCivique")
@@ -40,13 +40,13 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.Property<string>("Rue")
                         .IsRequired()
                         .HasColumnName("Rue")
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("text")
                         .HasMaxLength(200);
 
                     b.Property<string>("Ville")
                         .IsRequired()
                         .HasColumnName("Ville")
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("text")
                         .HasMaxLength(100);
 
                     b.HasKey("AdresseId");
@@ -69,7 +69,7 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.Property<string>("Nom")
                         .IsRequired()
                         .HasColumnName("Nom")
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("text")
                         .HasMaxLength(120);
 
                     b.Property<decimal?>("Poids")
@@ -129,7 +129,7 @@ namespace EntityFrameWorkRelationships.Migrations
                     b.Property<string>("Numero")
                         .IsRequired()
                         .HasColumnName("Numero")
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("text")
                         .HasMaxLength(10);
 
                     b.HasKey("TelephoneId");
