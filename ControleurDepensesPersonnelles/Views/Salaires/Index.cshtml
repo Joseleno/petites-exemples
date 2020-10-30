@@ -1,20 +1,20 @@
-﻿@model IEnumerable<ControleurDepensesPersonnelles.Models.TypeDepense>
+﻿@model IEnumerable<ControleurDepensesPersonnelles.Models.Salaire>
 
 @{
-    ViewData["Title"] = "Type Depénses";
+    ViewData["Title"] = "Salaires";
 }
 
 <div class="tabble">
     <div class="container">
-        
+
         <p class="btnNew">
-            <a asp-action="Create" class="btn btn-outline-primary btn-sm">Nouvelle dépense</a>
+            <a asp-action="Create" class="btn btn-outline-primary btn-sm">Nouveau Salaire</a>
         </p>
         @if (TempData["Confirmation"] != null)
         {
             <h6 class="alert alert-success">@TempData["Confirmation"]</h6>
         }
-        <form asp-controller="TypeDepenses" asp-action="Index" method="post">
+        <form asp-controller="Salaires" asp-action="Index" method="post">
             <div class="form-group">
                 <div class="input-group col-md-6">
                     <input class="form-control" name="txChercher" id="txChercher" />
@@ -24,15 +24,16 @@
                 </div>
             </div>
         </form>
-        <table class="table table-hover">
+        <table class="table">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Nom)
+                        @Html.DisplayNameFor(model => model.Mois)
                     </th>
                     <th>
-                        Actions
+                        @Html.DisplayNameFor(model => model.Valeur)
                     </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,11 +41,14 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Nom)
+                            @Html.DisplayFor(modelItem => item.Mois.Nom)
                         </td>
                         <td>
-                            <a asp-controller="TypeDepenses" asp-action="Edit" asp-route-id="@item.TypeDepenseId" class="btn btn-outline-warning btn-sm">Edit</a> |
-                            <a class="btn btn-outline-danger btn-sm" onclick="ShowModal(@item.TypeDepenseId,'@item.Nom')" >Supprimer</a>
+                            @Html.DisplayFor(modelItem => item.Valeur)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SalaireId" class="btn btn-outline-warning btn-sm">Edit</a> |
+                            <a onclick="ShowModal(@item.SalaireId)" class="btn btn-outline-danger btn-sm">Suprimmer</a>
                         </td>
                     </tr>
                 }
@@ -75,14 +79,13 @@
 
 @section Scripts{
     <script>
-        function ShowModal(id, nom) {
-            $(".nom")[0].innerHTML = nom;
+        function ShowModal(id) {
 
             $(".modal").modal();
 
             $(".btnSuprimmer").on('click', function () {
                 $.ajax({
-                    url: "TypeDepenses/Delete",
+                    url: "Salaires/Delete",
                     method: "POST",
                     data: { id: id },
                     success: function (data) {
@@ -93,4 +96,4 @@
             });
         }
     </script>
- }
+}
