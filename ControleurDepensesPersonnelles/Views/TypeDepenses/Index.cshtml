@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ControleurDepensesPersonnelles.Models.TypeDepense>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="tabble">
+    <div class="container">
+        <p class="btnNew">
+            <a asp-action="Create" class="btn btn-outline-primary btn-sm">Nouvelle dépense</a>
+        </p>
+        @if (TempData["Confirmation"] != null)
+        {
+            <h6 class="alert alert-success">@TempData["Confirmation"]</h6>
+        }
+        <form asp-controller="TypeDepenses" asp-action="Index" method="post">
+            <div class="form-group">
+                <div class="input-group col-md-6">
+                    <input class="form-control" name="txChercher" id="txChercher" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nom)
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            <a asp-controller="TypeDepenses" asp-action="Edit" asp-route-id="@item.TypeDepenseId" class="btn btn-outline-warning btn-sm">Edit</a> |
+                            <a class="btn btn-outline-danger btn-sm" onclick="ShowModal(@item.TypeDepenseId,'@item.Nom')" >Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Supprimer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous supprimer <text class="nom"></text></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btnSuprimmer">Oui</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Non</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function ShowModal(id, nom) {
+            $(".nom")[0].innerHTML = nom;
+
+            $(".modal").modal();
+
+            $(".btnSuprimmer").on('click', function () {
+                $.ajax({
+                    url: "TypeDepenses/Delete",
+                    method: "POST",
+                    data: { id: id },
+                    success: function (data) {
+                        $(".modal").modal('hide');
+                        location.reload(true);
+                    }
+                });
+            });
+        }
+    </script>
+ }
