@@ -9,7 +9,7 @@
 <div class="formulaire">
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Edit">
+            <form asp-action="Edit" class="form border rounded">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="TypeDepenseId" />
                 <div class="form-group">
@@ -19,8 +19,8 @@
                 </div>
                 <hr />
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                    <a asp-action="Index">Back to List</a>
+                    <input type="submit" value="Save" class="btn btn-outline-success btn-sm" />&nbsp;
+                    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
                 </div>
             </form>
         </div>

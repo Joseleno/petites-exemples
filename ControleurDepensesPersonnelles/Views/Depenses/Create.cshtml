@@ -1,23 +1,21 @@
-﻿@model ControleurDepensesPersonnelles.Models.Salaire
+﻿@model ControleurDepensesPersonnelles.Models.Depense
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Nouvelle Depénse";
 }
 
-
-
-<div class="formulaire">
-    <h4>Salaire</h4>
-    <hr />
+<<div class="formulaire">
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Edit" class="form border rounded">
+            <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="SalaireId" />
                 <div class="form-group">
-                    <label asp-for="Mois.Nom" class="control-label">Mois</label>
+                    <label asp-for="MoisId" class="control-label">Mois</label>
                     <select asp-for="MoisId" class="form-control" asp-items="ViewBag.MoisId"></select>
-                    <span asp-validation-for="MoisId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TypeDepenseId" class="control-label">Type depénse</label>
+                    <select asp-for="TypeDepenseId" class="form-control" asp-items="ViewBag.TypeDepenseId"></select>
                 </div>
                 <div class="form-group">
                     <label asp-for="Valeur" class="control-label"></label>
@@ -25,14 +23,15 @@
                     <span asp-validation-for="Valeur" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-outline-success btn-sm" />&nbsp;
+                    <input type="submit" value="Save" class="btn btn-outline-success" />
                     <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
                 </div>
             </form>
         </div>
     </div>
+
 </div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

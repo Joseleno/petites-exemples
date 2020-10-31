@@ -38,3 +38,6 @@ C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Create.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Edit.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Index.cshtml.g.cs
+C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Create.cshtml.g.cs
+C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Edit.cshtml.g.cs
+C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Index.cshtml.g.cs
