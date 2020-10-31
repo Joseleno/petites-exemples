@@ -1,0 +1,97 @@
+﻿@model ControleurDepensesPersonnelles.Models.Depense
+
+@{
+    ViewData["Title"] = "Nouvelle Depénse";
+}
+
+<<div class="formulaire">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MoisId" class="control-label">Mois</label>
+                    <select asp-for="MoisId" class="form-control" asp-items="ViewBag.MoisId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TypeDepenseId" class="control-label">Type depénse</label>
+                    <div class="input-group">
+                        <select asp-for="TypeDepenseId" class="form-control" asp-items="ViewBag.TypeDepenseId"></select>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="right" title="Ajouter nouvelle depénse" onclick="ShowModal()">
+                                <i class="far fa-plus-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Valeur" class="control-label"></label>
+                    <input asp-for="Valeur" class="form-control" />
+                    <span asp-validation-for="Valeur" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-outline-success" />
+                    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter nouvelle depénse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control txDepense"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btnAjouter">Ajouter</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+<script>
+
+    $(function () {
+        $('[data-toogle="tooltip"]')
+    });
+
+    function ShowModal(id) {
+
+        $(".modal").modal();
+
+        $(".btnAjouter").on('click', function () {
+            let txDepense = $(".txDepense").val();
+            $.ajax({
+                url: "/TypeDepenses/AjouterDepense",
+                method: "POST",
+                data: { txDepense: txDepense },
+                success: function (data) {
+                    if (!data) {
+                        $(".modal").modal('hide');
+                        $(".modal").modal('dispose');
+                        $(".btnAjouter").unbind('click');
+                        $(".txDepense").val('');
+                        alert("Type depénse a déja enrisgesté.")
+                        
+                    }
+                    else location.reload(true);
+
+                }
+            });
+        });
+    }
+</script>
+}

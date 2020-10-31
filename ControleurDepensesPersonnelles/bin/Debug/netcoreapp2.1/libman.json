@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "Chart.js@2.7.2",
+      "destination": "wwwroot/lib/Chart.js/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "bootstrap@4.5.3",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "popper.js@1.16.1",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "jquery-validate@1.17.0",
+      "destination": "wwwroot/lib/jquery-validation"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.9",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    }
+  ,
+{
+  "library": "font-awesome@5.15.1",
+  "destination": "wwwroot/lib/font-awesome/"
+}
+]
+}

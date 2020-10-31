@@ -1,0 +1,31 @@
+﻿@model ControleurDepensesPersonnelles.Models.TypeDepense
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>TypeDepense</h4>
+<hr />
+<div class="formulaire">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" class="form border rounded">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TypeDepenseId" />
+                <div class="form-group">
+                    <label asp-for="Nom" class="col-form-label"></label>
+                    <input asp-for="Nom" class="form-control form-control-sm" />
+                    <span asp-validation-for="Nom" class="text-danger"></span>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-outline-success btn-sm" />&nbsp;
+                    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
