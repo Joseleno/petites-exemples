@@ -34,7 +34,7 @@ namespace ControleurDepensesPersonnelles.Controllers
         public IActionResult Create()
         {
             ViewData["MoisId"] = new SelectList(_context.Mois, "MoisId", "Nom");
-            ViewData["TypeDepenseId"] = new SelectList(_context.TypeDepenses, "TypeDepenseId", "Nom");
+            ViewData["TypeDepenseId"] = new SelectList(_context.TypeDepenses.OrderBy(x => x.Nom), "TypeDepenseId", "Nom");
             return View();
         }
 

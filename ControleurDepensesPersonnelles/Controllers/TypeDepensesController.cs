@@ -35,9 +35,27 @@ namespace ControleurDepensesPersonnelles.Controllers
             return View(await _context.TypeDepenses.OrderBy(td => td.Nom).ToListAsync());
         }
 
+        [HttpPost]
+        public JsonResult AjouterDepense(string txDepense)
+        {
+            if (!String.IsNullOrEmpty(txDepense))
+            {
+
+                if (!_context.TypeDepenses.Any(td => td.Nom.ToUpper().ToString().Equals(txDepense.ToUpper())))
+                {
+                    var typeDepense = new TypeDepense();
+                    typeDepense.Nom = txDepense;
+                    _context.Add(typeDepense);
+                    _context.SaveChanges();
+                    return Json(true);
+                }
+            }
+            return Json(false);
+        }
+
         public async Task<JsonResult> VerifierTypeDesp(string nom)
         {
-            if (await _context.TypeDepenses.AnyAsync(td =>td.Nom.ToUpper().ToString().Equals(nom.ToUpper())))
+            if (await _context.TypeDepenses.AnyAsync(td => td.Nom.ToUpper().ToString().Equals(nom.ToUpper())))
             {
                 return Json("Ce type existe déjà");
             }
@@ -49,7 +67,7 @@ namespace ControleurDepensesPersonnelles.Controllers
         {
             return View();
         }
-       
+
 
         // POST: TypeDepenses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
