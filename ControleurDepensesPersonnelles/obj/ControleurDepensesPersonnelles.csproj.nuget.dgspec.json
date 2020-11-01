@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj": {}
+    "C:\\Users\\josel\\source\\repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj": {
+    "C:\\Users\\josel\\source\\repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj",
+        "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj",
         "projectName": "ControleurDepensesPersonnelles",
-        "projectPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj",
+        "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\ControleurDepensesPersonnelles\\ControleurDepensesPersonnelles.csproj",
         "packagesPath": "C:\\Users\\josel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\ControleurDepensesPersonnelles\\obj\\",
+        "outputPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\ControleurDepensesPersonnelles\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josel\\AppData\\Roaming\\NuGet\\NuGet.Config",

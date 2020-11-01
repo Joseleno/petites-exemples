@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleurDepensesPersonnelles.Models;
 using X.PagedList;
+using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
+using ControleurDepensesPersonnelles.ViewModels;
 
 namespace ControleurDepensesPersonnelles.Controllers
 {
@@ -24,6 +26,9 @@ namespace ControleurDepensesPersonnelles.Controllers
         {
             const int itensPage = 10;
             int numeroPage = (page ?? 1);
+
+            ViewData["Mois"] = new SelectList(_context.Mois.Where(x=> x.MoisId == x.Salaire.MoisId),"MoisId","Nom");
+
             var context = _context.Depenses.Include(d => d.Mois).Include(d => d.TypeDepense);
             return View(await context.OrderBy(d => d.MoisId).ToPagedListAsync(numeroPage, itensPage));
         }
@@ -127,5 +132,14 @@ namespace ControleurDepensesPersonnelles.Controllers
         {
             return _context.Depenses.Any(e => e.DepenseId == id);
         }
+        public JsonResult DepenseMois(int moisId)
+        {
+            DepensesMoisViewModel depenses = new DepensesMoisViewModel();
+            depenses.ValeurTotalDepense = _context.Depenses.Where(x => x.Mois.MoisId == moisId).Sum(x => x.Valeur);
+            depenses.Salaire = _context.Salaires.Where(x => x.Mois.MoisId == moisId).Select(x => x.Valeur).FirstOrDefault();
+
+            return Json(depenses);
+        }
+
     }
 }

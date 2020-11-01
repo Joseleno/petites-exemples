@@ -18,8 +18,15 @@ C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.TagHelpers.input.cache
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.TagHelpers.output.cache
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.RazorCoreGenerate.cache
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Create.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Edit.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Index.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Create.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Edit.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Index.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_DepenseMois.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\TypeDepenses\Create.cshtml.g.cs
@@ -34,10 +41,3 @@ C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.pdb
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.genruntimeconfig.cache
 C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.csproj.CopyComplete
-C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\ControleurDepensesPersonnelles.csprojAssemblyReference.cache
-C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Create.cshtml.g.cs
-C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Edit.cshtml.g.cs
-C:\Users\josel\source\repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Salaires\Index.cshtml.g.cs
-C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Create.cshtml.g.cs
-C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Edit.cshtml.g.cs
-C:\Users\josel\Source\Repos\petites-exemples\ControleurDepensesPersonnelles\obj\Debug\netcoreapp2.1\Razor\Views\Depenses\Index.cshtml.g.cs

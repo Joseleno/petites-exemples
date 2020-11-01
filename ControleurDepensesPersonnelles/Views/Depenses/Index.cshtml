@@ -17,6 +17,21 @@
         {
             <h6 class="alert alert-success">@TempData["Confirmation"]</h6>
         }
+        <div class="row justify-content-md-center">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label"><strong>Mois</strong></label>
+                <div class="col-sm-9">
+                    <select class="form-control selectMois" asp-items="ViewBag.Mois"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <partial name="_DepenseMois" />
+            </div>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -84,7 +99,11 @@
 })
 
 @section Scripts{
+    <script src="~/js/GraphiqueDepenseMois.js"></script>
     <script>
+
+        ChargerDonnesGraphiqueDepenseMois();
+
         function ShowModal(id) {
 
             $(".modal").modal();
