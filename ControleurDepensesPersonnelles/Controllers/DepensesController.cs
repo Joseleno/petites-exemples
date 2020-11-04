@@ -132,7 +132,7 @@ namespace ControleurDepensesPersonnelles.Controllers
         {
             return _context.Depenses.Any(e => e.DepenseId == id);
         }
-        public JsonResult DepenseMois(int moisId)
+        public JsonResult DepenseTotalMois(int moisId)
         {
             DepensesMoisViewModel depenses = new DepensesMoisViewModel();
             depenses.ValeurTotalDepense = _context.Depenses.Where(x => x.Mois.MoisId == moisId).Sum(x => x.Valeur);
@@ -140,6 +140,23 @@ namespace ControleurDepensesPersonnelles.Controllers
 
             return Json(depenses);
         }
+
+        public JsonResult DepenseMois(int moisId)
+        {
+
+            var sql = from depense in _context.Depenses
+                      where depense.MoisId == moisId
+                      group depense by depense.TypeDepense.Nom into result
+                      select new
+                      {
+                          TypeDepense = result.Key,
+                          Valeurs = result.Sum(d => d.Valeur)
+                      };
+            
+
+            return Json(sql);
+        }
+
 
     }
 }

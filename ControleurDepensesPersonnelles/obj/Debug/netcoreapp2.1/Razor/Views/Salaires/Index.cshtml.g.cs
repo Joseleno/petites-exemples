@@ -71,7 +71,7 @@ using ControleurDepensesPersonnelles.Models;
             WriteLiteral("\r\n<div class=\"tabble\">\r\n    <div class=\"container\">\r\n\r\n        <p class=\"btnNew\">\r\n            ");
             EndContext();
             BeginContext(208, 81, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59b9026f49394d32be81bdb7ffaa9458", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d1309ab5b1940c89bb1fe7e77825ba4", async() => {
                 BeginContext(270, 15, true);
                 WriteLiteral("Nouveau Salaire");
                 EndContext();
@@ -121,7 +121,7 @@ using ControleurDepensesPersonnelles.Models;
             WriteLiteral("        ");
             EndContext();
             BeginContext(459, 504, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2fab6943290248be98580cc0dc92976d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7cefcaec26b44afbb75c15e5fbdee2a", async() => {
                 BeginContext(524, 432, true);
                 WriteLiteral(@"
             <div class=""form-group"">
@@ -207,7 +207,7 @@ using ControleurDepensesPersonnelles.Models;
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(1795, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01e1eafddb8c49a4b1deae86671e6348", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63bb08cae6d74538a8acff3f180cf22f", async() => {
                 BeginContext(1886, 4, true);
                 WriteLiteral("Edit");
                 EndContext();

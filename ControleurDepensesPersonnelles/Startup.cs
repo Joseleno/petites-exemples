@@ -58,7 +58,7 @@ namespace ControleurDepensesPersonnelles
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=TypeDepenses}/{action=Index}/{id?}");
+                    template: "{controller=Depenses}/{action=Index}/{id?}");
             });
         }
     }

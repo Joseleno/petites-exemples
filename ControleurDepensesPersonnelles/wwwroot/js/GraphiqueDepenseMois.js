@@ -15,12 +15,13 @@
                 type: 'pie',
                 data:
                 {
-                    labels: ['Solde', 'Depénses'],
+                    labels: GetTypeDepenses(donnes),
                     datasets: [
                         {
-                            label: "Depénses",
-                            backgroundColor: ["#27ae60", "#c0392b"],
-                            data: [(donnes.salaire - donnes.valeurTotalDepense), donnes.valeurTotalDepense]
+                            label: "Depénses par type",
+                            backgroundColor: GetCouleurs(donnes.length),
+                            hoverBackgroundColor: GetCouleurs(donnes.length),
+                            data: GetValeurs(donnes)
                         }
                     ]
                 },
@@ -28,7 +29,7 @@
                     responsive: false,
                     title: {
                         display: true,
-                        text:" Total depénses par Mois"
+                        text: " Depénses par Type"
                     }
                 }
             });
@@ -39,11 +40,13 @@
 });
 
 function ChargerDonnesGraphiqueDepenseMois() {
-    
+
+    var moisId = $(".selectMois").val();
+
     $.ajax({
         url: "Depenses/DepenseMois",
         method: "POST",
-        data: { moisId: 1 },
+        data: { moisId: moisId },
         success: function (donnes) {
             $("canvas#GraphiqueDepenseMois").remove();
             $("div.divDepenseMois").append('<canvas id="GraphiqueDepenseMois" style="width: 400px; height: 400px;"></canvas>');
@@ -54,12 +57,13 @@ function ChargerDonnesGraphiqueDepenseMois() {
                 type: 'pie',
                 data:
                 {
-                    labels: ['Solde', 'Depénses'],
+                    labels: GetTypeDepenses(donnes),
                     datasets: [
                         {
-                            label: "Depénses",
-                            backgroundColor: ["#27ae60", "#c0392b"],
-                            data: [(donnes.salaire - donnes.valeurTotalDepense), donnes.valeurTotalDepense]
+                            label: "Depénses par type",
+                            backgroundColor: GetCouleurs(donnes.length),
+                            hoverBackgroundColor: GetCouleurs(donnes.length),
+                            data: GetValeurs(donnes)
                         }
                     ]
                 },
@@ -67,12 +71,11 @@ function ChargerDonnesGraphiqueDepenseMois() {
                     responsive: false,
                     title: {
                         display: true,
-                        text: " Total depénses par Mois"
+                        text: " Depénses par Type"
                     }
                 }
             });
 
         }
     });
-
 }

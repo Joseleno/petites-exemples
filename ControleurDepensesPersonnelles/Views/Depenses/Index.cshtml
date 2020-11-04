@@ -28,8 +28,13 @@
 
         <div class="row">
             <div class="col">
+                <partial name="_DepenseTotalMois" />
+            </div>
+
+            <div class="col">
                 <partial name="_DepenseMois" />
             </div>
+
         </div>
 
         <table class="table">
@@ -95,13 +100,17 @@
 @Html.PagedListPager(Model, page => Url.Action("Index", "Depenses", new { page }), new PagedListRenderOptionsBase
 {
     LiElementClasses = new string[] { "page-item" },
-    PageClasses = new string[] {"page-link"}
+    PageClasses = new string[] { "page-link" }
 })
 
 @section Scripts{
-    <script src="~/js/GraphiqueDepenseMois.js"></script>
+
+    <script src="~/bundle.js"></script>
+
     <script>
 
+
+        ChargerDonnesGraphiqueDepenseTotalMois();
         ChargerDonnesGraphiqueDepenseMois();
 
         function ShowModal(id) {
