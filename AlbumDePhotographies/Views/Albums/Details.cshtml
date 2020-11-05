@@ -1,0 +1,42 @@
+﻿@model AlbumDePhotographies.Models.Album
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoCouverture)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhotoCouverture)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Debut)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Debut)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fin)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AlbumId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

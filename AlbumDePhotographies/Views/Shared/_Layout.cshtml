@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Album de Photographies</title>
+
+    <environment include="Development">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+       @* <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />*@
+        <link href="~/lib/materialize/css/materialize.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link href="~/lib/materialize/css/materialize.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="">
+        <nav>
+            <div class="nav-wrapper blue darken-3">
+                <a class="brand-logo center" asp-controller="Albums" asp-action="Index">Album de photographies</a>
+
+            </div>
+        </nav>
+    </div>
+    <div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; 2020 - Album de Photographies</p>
+    </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script src="~/lib/materialize/js/materialize.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script src="~/lib/materialize/js/materialize.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
