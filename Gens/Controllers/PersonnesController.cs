@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gens.Models;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Gens.Controllers
 {
@@ -27,8 +28,6 @@ namespace Gens.Controllers
                 {
                     return Json("Personne déjà inscrite");
                 }
-            
-            
 
             return Json(true);
         }
@@ -37,6 +36,18 @@ namespace Gens.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Gens.ToListAsync());
+        }
+
+        public IActionResult CreerCSV()
+        {
+            var gens = _context.Gens.ToList();
+            StringBuilder ficher = new StringBuilder();
+            ficher.AppendLine("Id;Nom;Age;Curriel") ;
+            foreach(var p in gens)
+            {
+                ficher.AppendLine(p.PersonneId + ";" + p.Nom + ";" + p.Age + ";" + p.Courriel);
+            }
+            return File(Encoding.ASCII.GetBytes(ficher.ToString()), "text/csv", "donnes.csv");
         }
 
         // GET: Personnes/Create

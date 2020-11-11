@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gens.Validation
 {
-    
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class AdulteAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
