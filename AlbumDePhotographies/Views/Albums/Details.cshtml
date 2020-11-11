@@ -1,42 +1,40 @@
 ﻿@model AlbumDePhotographies.Models.Album
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details album " + Model.Nom;
 }
 
-<h2>Details</h2>
+<div class="listAlbums">
+    <div class="photo">
+        <div class="container">
+            <div class="text">
+                <h2 class="white-text">@Html.DisplayFor(model => model.Nom)</h2>
+                <h5 class="white-text">@Html.DisplayFor(model => model.Debut) à @Html.DisplayFor(model => model.Fin)</h5>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <h4>Album</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoCouverture)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhotoCouverture)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Debut)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Debut)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Fin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Fin)
-        </dd>
-    </dl>
+    <div>
+        <hr />
+        <h5 class="center">Photos - @Model.Nom</h5>
+        <hr />
+        <div class="lienPhoto hide">@Model.PhotoCouverture</div>
+    </div>
+    <div>
+        <a asp-controller="Photos" asp-action="Create" asp-route-id="@Model.AlbumId" class="btn-small">Nouvelle photo</a> |
+        <a asp-action="Index" class="btn-small grey darken-3">Retour</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.AlbumId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@await Component.InvokeAsync("Photo", new { id = Model.AlbumId})
+
+@section Scripts{
+    <script>
+    var lienPhoto = $(".lienPhoto").text();
+        var url = "/" + lienPhoto;
+        $(document).ready(function () {
+            $(".photo").css("background-image", 'url("@Url.Content(Model.PhotoCouverture)")');
+        });
+
+    </script>
+}

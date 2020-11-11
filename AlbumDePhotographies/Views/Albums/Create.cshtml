@@ -1,48 +1,152 @@
 ﻿@model AlbumDePhotographies.Models.Album
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nouveau Album";
 }
 
-<h2>Create</h2>
+<div class="formulaire">
+    <div class="container">
+        <div class="title">
+            <h5>Album</h5>
+            <hr />
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="input-field">
+                        <label asp-for="Nom" class="control-label"></label>
+                        <input asp-for="Nom" class="form-control" />
+                        <span asp-validation-for="Nom" class="text-danger"></span>
+                    </div>
+                    
+                    <img id="photo" src="#" alt="photo" />
+                    <div class="file-field input-field">
+                        <div class="btn-small">
+                            <span>Sélectionnez le fichier</span>
+                            <input asp-for="PhotoCouverture" class="form-control" type="file" name="ficher" onchange="ChargerPhoto(this)" />
+                            <span asp-validation-for="PhotoCouverture" class="text-danger"></span>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path-wrapper validate" type="text" placeholder="Envoyer la photo" />
+                        </div>
+                    </div>
 
-<h4>Album</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nom" class="control-label"></label>
-                <input asp-for="Nom" class="form-control" />
-                <span asp-validation-for="Nom" class="text-danger"></span>
+                    <div class="input-field">
+                        <label asp-for="Debut" class="control-label"></label>
+                        <input asp-for="Debut" class="form-control datepicker" type="text" />
+                        <span asp-validation-for="Debut" class="text-danger"></span>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Fin" class="control-label"></label>
+                        <input asp-for="Fin" class="form-control datepicker" type="text" />
+                        <span asp-validation-for="Fin" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Enregistrer" class="btn btn-small" /> &nbsp;|&nbsp;
+                        <a asp-action="Index" class="btn-small grey darken-3">Retour</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="PhotoCouverture" class="control-label"></label>
-                <input asp-for="PhotoCouverture" class="form-control" />
-                <span asp-validation-for="PhotoCouverture" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Debut" class="control-label"></label>
-                <input asp-for="Debut" class="form-control" />
-                <span asp-validation-for="Debut" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Fin" class="control-label"></label>
-                <input asp-for="Fin" class="form-control" />
-                <span asp-validation-for="Fin" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('#photo').hide();
+
+            $('.datepicker').datepicker({
+                autoclose: true,
+                format: 'dd-mm-yyyy',
+                defaultDate: new Date(),
+                setDefaultDate: true,
+                disableWeekends: false,
+                showDaysInNextAndPreviousMonths: true,
+                showMonthAfterYear: true,
+                firstDay: 0,
+                showClearBtn: true,
+                i18n: {
+                    cancel: 'Annuler',
+                    clear: 'Clear',
+                    done: 'Ok',
+                    previousMonth: '‹',
+                    nextMonth: '›',
+                    months: [
+                        'Janvier',
+                        'Février',
+                        'Mars',
+                        'Avril',
+                        'Mai',
+                        'Juin',
+                        'Juillet',
+                        'Août',
+                        'Septembre',
+                        'Octobre',
+                        'Novembre',
+                        'Décembre'
+                    ],
+
+                    monthsShort: [
+                        'Jan',
+                        'Fev',
+                        'Mar',
+                        'Avr',
+                        'Mai',
+                        'Jun',
+                        'Juil',
+                        'Août',
+                        'Sept',
+                        'Oct',
+                        'Nov',
+                        'Déc'
+                    ],
+
+                    weekdays: [
+                        'Dimanche',
+                        'Lundi',
+                        'Mardi',
+                        'Mercredi',
+                        'Jeudi',
+                        'Vendredi',
+                        'Samedi'
+                    ],
+
+                    weekdaysShort: [
+                        'Dim',
+                        'Lun',
+                        'Mar',
+                        'Mer',
+                        'Jeu',
+                        'Ven',
+                        'Sam'
+                    ],
+
+                    weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'v', 'S']
+                }
+
+            });
+        });
+
+        function ChargerPhoto(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                $('#photo').show();
+
+                reader.onload = function (e) {
+                    $('#photo').attr('src', e.target.result);
+                }
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    </script>
 }

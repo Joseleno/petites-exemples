@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlbumDePhotographies.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace AlbumDePhotographies.Controllers
 {
@@ -13,9 +16,12 @@ namespace AlbumDePhotographies.Controllers
     {
         private readonly Context _context;
 
-        public AlbumsController(Context context)
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public AlbumsController(Context context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Albums
@@ -53,10 +59,21 @@ namespace AlbumDePhotographies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumId,Nom,PhotoCouverture,Debut,Fin")] Album album)
+        public async Task<IActionResult> Create([Bind("AlbumId,Nom,PhotoCouverture,Debut,Fin")] Album album, IFormFile ficher)
         {
             if (ModelState.IsValid)
             {
+                var lienUpload = Path.Combine(_hostingEnvironment.WebRootPath,"Photos" );
+
+                if(ficher != null)
+                {
+                    using(FileStream fileStream = new FileStream(Path.Combine(lienUpload, ficher.FileName), FileMode.Create))
+                    {
+                        await ficher.CopyToAsync(fileStream);
+                        album.PhotoCouverture = "~/Photos/" + ficher.FileName;
+                    }
+                }
+
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,6 +94,9 @@ namespace AlbumDePhotographies.Controllers
             {
                 return NotFound();
             }
+
+            TempData["PhotoCouverture"] = album.PhotoCouverture;
+
             return View(album);
         }
 
@@ -85,17 +105,34 @@ namespace AlbumDePhotographies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Nom,PhotoCouverture,Debut,Fin")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("AlbumId,Nom,PhotoCouverture,Debut,Fin")] Album album, IFormFile ficher)
         {
             if (id != album.AlbumId)
             {
                 return NotFound();
             }
 
+            if (String.IsNullOrEmpty(album.PhotoCouverture))
+            {
+                var teste = TempData["PhotoCouverture"];
+                album.PhotoCouverture = TempData["PhotoCouverture"].ToString();
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var lienUpload = Path.Combine(_hostingEnvironment.WebRootPath, "Photos");
+
+                    if (ficher != null)
+                    {
+                        using (FileStream fileStream = new FileStream(Path.Combine(lienUpload, ficher.FileName), FileMode.Create))
+                        {
+                            await ficher.CopyToAsync(fileStream);
+                            album.PhotoCouverture = "~/Photos/" + ficher.FileName;
+                        }
+                    }
+
                     _context.Update(album);
                     await _context.SaveChangesAsync();
                 }
@@ -120,6 +157,21 @@ namespace AlbumDePhotographies.Controllers
         public async Task<JsonResult> Delete(int AlbumId)
         {
             var album = await _context.Albums.FindAsync(AlbumId);
+            IEnumerable<string> liens = _context.Photos.Where(p => p.AlbumId == AlbumId).Select(p => p.Lien);
+
+            foreach (var l in liens) 
+            {
+                var lienPhoto = l.Replace("~", "wwwroot");
+                System.IO.File.Delete(lienPhoto);
+            }
+
+            _context.Photos.RemoveRange(_context.Photos.Where(x => x.AlbumId == AlbumId));
+
+            string lienPhotoCouverture = album.PhotoCouverture;
+            lienPhotoCouverture = lienPhotoCouverture.Replace("~", "wwwroot");
+            System.IO.File.Delete(lienPhotoCouverture);
+
+
             _context.Albums.Remove(album);
             await _context.SaveChangesAsync();
             return Json("Album a été supprimé");

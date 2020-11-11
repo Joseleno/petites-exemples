@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oiON30v30D5op1V7YPGF65EoP8yojBDBCjJTL/ixdWFzNhDnZuopC+27QgTRHh8wbv55Bd/gaugS5w/yYK6q6w==",
+  "dgSpecHash": "wfY1RAWoJvfnWEuEApgamDzZWUH0uHX80IpUI+fw/5vin/9km2q5OjLaeVcN497raLmuoaWUKppk99ED0iwqyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josel\\Source\\Repos\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
+  "projectFilePath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\josel\\.nuget\\packages\\microsoft.aspnetcore\\2.1.7\\microsoft.aspnetcore.2.1.7.nupkg.sha512",
