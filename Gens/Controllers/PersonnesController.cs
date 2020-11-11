@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Gens.Models;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Rotativa.AspNetCore;
 
 namespace Gens.Controllers
 {
@@ -47,8 +48,14 @@ namespace Gens.Controllers
             {
                 ficher.AppendLine(p.PersonneId + ";" + p.Nom + ";" + p.Age + ";" + p.Courriel);
             }
-            return File(Encoding.ASCII.GetBytes(ficher.ToString()), "text/csv", "donnes.csv");
+            return File(Encoding.ASCII.GetBytes(ficher.ToString()), "text/csv", "Gens.csv");
         }
+
+        public IActionResult CreerPDF()
+        {
+            return new ViewAsPdf("PDF", _context.Gens.ToList()) { FileName = "Gens.pdf" };
+        }
+
 
         // GET: Personnes/Create
         public IActionResult Create()

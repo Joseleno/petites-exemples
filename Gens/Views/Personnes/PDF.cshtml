@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Gens.Models.Personne>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDF</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+</head>
+<body>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courriel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmationCourriel)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courriel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmationCourriel)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

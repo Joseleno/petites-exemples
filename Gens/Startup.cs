@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rotativa.AspNetCore;
 
 namespace Gens
 {
@@ -49,6 +50,8 @@ namespace Gens
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            RotativaConfiguration.Setup(env);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
