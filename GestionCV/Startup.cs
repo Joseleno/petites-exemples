@@ -52,15 +52,22 @@ namespace GestionCV
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
+            // Une autre maniere pour creer la base de donnes
+            /*using (var scope =app.ApplicationServices.GetRequiredService<IServiceProvider>().CreateScope())
+            //{
+            //    var context = scope.ServiceProvider.GetRequiredService<Context>();
+            //    context.Database.EnsureCreated();
+            }*/
+
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                }
+                else
+                {
+                    app.UseExceptionHandler("/Home/Error");
+                    app.UseHsts();
+                }
 
             app.UseAuthentication();
             app.UseSession();
