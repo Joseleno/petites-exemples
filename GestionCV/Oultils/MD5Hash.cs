@@ -23,8 +23,7 @@ namespace GestionCV.Oultils
             }
             catch (Exception)
             {
-                return null; 
-            }
+                return null;            }
         }
 
     }

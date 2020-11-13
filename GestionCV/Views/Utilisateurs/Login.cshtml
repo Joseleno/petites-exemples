@@ -1,15 +1,15 @@
-﻿@model GestionCV.Models.Utilisateur
+﻿@model GestionCV.ViewModels.LoginViewModel
 
 @{
     ViewData["Title"] = "Enregistrer";
 }
 
 <div class="formulaire">
-    <h5>Enregistrer l'utilisateur</h5>
+    <h5>Login</h5>
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Enregistrer">
+            <form asp-action="Login">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="row">
@@ -28,10 +28,10 @@
                     </div>
                 </div>
 
-                
+
                 <div class="row">
-                    <input type="submit" value="Pas inscrit? Créer un compte" class="btn btn-small orange darken-2" />
-                    <a asp-action="Login" asp-controller="Utilisateurs">Connexion</a>
+                    <input type="submit" value="Connexion" class="btn btn-small orange darken-2" />
+                    <a asp-action="Enregistrer" asp-controller="Utilisateurs">Créer un compte</a>
                 </div>
             </form>
         </div>

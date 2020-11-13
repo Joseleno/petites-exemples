@@ -6,14 +6,14 @@
     <title>@ViewData["Title"] - GestionCV</title>
 
     <environment include="Development">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="~/materialize/css/materialize.css" rel="stylesheet" />
         <link href="~/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
 
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="~/materialize/css/materialize.css" rel="stylesheet" />
         <link href="~/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
@@ -21,9 +21,9 @@
 </head>
 <body>
     <div class="navbar-fixed">
-        <nav class="teal darken-4">
-            <div class="nav-wrapper visible-sm">
-                <a href="#" class="brand-logo small">Gestion de CV</a>
+        <nav class="orange lighten-2">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><i class="material-icons center-align">library_books</i>Gestion de CV</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if (!User.Identity.IsAuthenticated)
                     {

@@ -47,3 +47,22 @@ body {
     padding-top: 70px;
     padding-bottom: 70px;
 }
+
+nav {
+    height: 45px;
+    line-height: 45px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 45px;
+    line-height: 45px;
+}
+
+nav .button-collapse i {
+    height: 30px;
+    line-height: 30px;
+}
+
+nav .brand-logo {
+    font-size: 1.5rem;
+}

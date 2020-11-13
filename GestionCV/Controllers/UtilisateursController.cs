@@ -1,15 +1,14 @@
-﻿using System;
+﻿using GestionCV.Models;
+using GestionCV.Oultils;
+using GestionCV.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using GestionCV.Models;
-using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using GestionCV.Oultils;
+using System.Threading.Tasks;
 
 namespace GestionCV.Controllers
 {
@@ -17,7 +16,7 @@ namespace GestionCV.Controllers
     {
         private readonly IMd5 _md;
         private readonly Context _context;
-        
+
 
         public UtilisateursController(Context context, IMd5 md5)
         {
@@ -40,20 +39,16 @@ namespace GestionCV.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 string md = _md.GererHash(utilisateur.MotDePasse).ToString();
                 utilisateur.MotDePasse = md;
 
                 _context.Add(utilisateur);
                 await _context.SaveChangesAsync();
 
-                InformationLogin donnes = new InformationLogin
-                {
-                    UtilisateurId = utilisateur.UtilisateurId, 
-                    AdresseIp = Request.HttpContext.Connection.RemoteIpAddress.ToString(), 
-                    Date = DateTime.Now.ToShortDateString(), 
-                    Hour = DateTime.Now.ToShortTimeString() 
-                };
+                EnregistrerInformationLogin(utilisateur.UtilisateurId);
+
+                await _context.SaveChangesAsync();
 
                 HttpContext.Session.SetInt32("UtilisateurId", utilisateur.UtilisateurId);
 
@@ -62,7 +57,7 @@ namespace GestionCV.Controllers
                     new Claim(ClaimTypes.Email, utilisateur.Courriel)
                 };
 
-                var userIdentity = new ClaimsIdentity(claims,"login");
+                var userIdentity = new ClaimsIdentity(claims, "login");
 
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(principal).ConfigureAwait(false);
@@ -72,9 +67,60 @@ namespace GestionCV.Controllers
             return View(utilisateur);
         }
 
-        private bool UtilisateurExists(int id)
+        [HttpGet]
+        public IActionResult Login()
         {
-            return _context.Utilisateur.Any(e => e.UtilisateurId == id);
+            if (User.Identity.IsAuthenticated)
+            {
+                HttpContext.Session.Clear();
+            }
+            return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel login)
+        {
+            if (ModelState.IsValid && _context.Utilisateur.Any(u => u.Courriel.Equals(login.Courriel) && u.MotDePasse.Equals(_md.GererHash(login.MotDePasse))))
+            {
+                int utilisateurId = _context.Utilisateur.Where(u => u.Courriel.Equals(login.Courriel) && u.MotDePasse.Equals(_md.GererHash(login.MotDePasse))).Select(u => u.UtilisateurId).Single();
+
+                EnregistrerInformationLogin(utilisateurId);
+                
+                await _context.SaveChangesAsync();
+
+                HttpContext.Session.SetInt32("UtilisateurId", utilisateurId);
+
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Email, login.Courriel)
+                };
+
+                var userIdentity = new ClaimsIdentity(claims, "login");
+
+                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                await HttpContext.SignInAsync(principal).ConfigureAwait(false);
+
+                return RedirectToAction("Index", "Curriculums");
+            }
+
+            return View(login);
+
+        }
+
+        public void EnregistrerInformationLogin(int id)
+        {
+            InformationLogin informationLogin = new InformationLogin
+            {
+                UtilisateurId = id,
+                AdresseIp = Request.HttpContext.Connection.RemoteIpAddress.ToString(),
+                Date = DateTime.Now.ToShortDateString(),
+                Hour = DateTime.Now.ToShortTimeString()
+            };
+
+            _context.Add(informationLogin);
+
+
+        }
+
     }
 }

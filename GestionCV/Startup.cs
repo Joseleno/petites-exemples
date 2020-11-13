@@ -41,7 +41,7 @@ namespace GestionCV
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             //Ajouter le DI
-            services.AddTransient<IMd5, MD5Hash>();
+            services.AddSingleton<IMd5, MD5Hash>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
