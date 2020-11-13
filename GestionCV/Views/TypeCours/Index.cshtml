@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GestionCV.Models.TypeCours>
+
+@{
+    ViewData["Title"] = "Les types cours enregistrée";
+}
+
+<div class="formulaire">
+    <h4>Les types cours enregistrée</h4>
+    <p>
+        <a asp-action="Create" class="btn btn-small orange darken-2">Nouveau type cours</a>
+    </p>
+    <table class="table hover striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.TypeCoursId" class="btn-floating btn-small blue darken-4"><i class="material-icons">edit</i></a> |
+                        <a onclick="AfficherModal(@item.TypeCoursId)" class="btn-floating btn-small red darken-4 btn modal-trigger"><i class="material-icons">delete_forever</i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmer la suppression</h4>
+        <p>Voulez-vous confirmer la suppression?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close btn orange accent-4">Pas maintenant</a>
+        <a class="modal-close btn red accent-4 btnOui">Oui</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(".modal").modal();
+
+        function AfficherModal(id) {
+            $("#modal1").modal("open");
+            
+            $(".btnOui").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/TypeCours/Delete",
+                    data: { id: id },
+                    success: function () {
+                        alert("Type de cours supprimé avec succès");
+                        location.reload();
+                        $(".modal").modal('close');
+                    }
+
+                });
+            })
+        }
+    </script>
+ }

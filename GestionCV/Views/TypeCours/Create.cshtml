@@ -1,0 +1,29 @@
+﻿@model GestionCV.Models.TypeCours
+
+@{
+    ViewData["Title"] = "Nouveau type de cours";
+}
+
+
+<div class="formulaire">
+    <h4>Nouveau type de cours</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Type" id="Type" class="validate" />
+                        <label for="Type">Type de Cours</label>
+                        <span asp-validation-for="Type" class="red-text darken-3"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
+                    <a asp-action="Index">Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
