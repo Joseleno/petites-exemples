@@ -1,4 +1,5 @@
 ﻿using GestionCV.Models;
+using GestionCV.Oultils;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +15,7 @@ namespace GestionCV
 {
     public class Startup
     {
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,6 +40,9 @@ namespace GestionCV
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            //Ajouter le DI
+            services.AddTransient<IMd5, MD5Hash>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -59,15 +63,15 @@ namespace GestionCV
             //    context.Database.EnsureCreated();
             }*/
 
-                if (env.IsDevelopment())
-                {
-                    app.UseDeveloperExceptionPage();
-                }
-                else
-                {
-                    app.UseExceptionHandler("/Home/Error");
-                    app.UseHsts();
-                }
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseAuthentication();
             app.UseSession();
@@ -84,5 +88,6 @@ namespace GestionCV
                     template: "{controller=Utilisateurs}/{action=Enregistrer}/{id?}");
             });
         }
+
     }
 }

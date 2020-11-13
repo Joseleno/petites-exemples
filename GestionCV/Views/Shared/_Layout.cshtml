@@ -22,8 +22,8 @@
 <body>
     <div class="navbar-fixed">
         <nav class="teal darken-4">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">La Gestion de CV</a>
+            <div class="nav-wrapper visible-sm">
+                <a href="#" class="brand-logo small">Gestion de CV</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if (!User.Identity.IsAuthenticated)
                     {
@@ -34,13 +34,13 @@
                     {
                         <li><a asp-controller="Curriculums" asp-action="Enregistrer">Utilisateurs</a></li>
                         <li><a asp-controller="InformationsLogin" asp-action="Login">Login</a></li>
-                        <li><a asp-controller="Utilisateurs" asp-action="Logout">Sortir</a></li>
+                        <li><a asp-controller="Utilisateurs" asp-action="Logout">Fermer</a></li>
                     }
                 </ul>
             </div>
         </nav>
     </div>
-    <partial name="_CookieConsentPartial" />
+    @*<partial name="_CookieConsentPartial" />*@
 
     <div class="container body-content">
         @RenderBody()

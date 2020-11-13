@@ -13,12 +13,10 @@ namespace GestionCV.Models
         [Required(ErrorMessage = "Chmaps requis")]
         [StringLength(50, ErrorMessage = "Seulement 50 caractères")]
         [EmailAddress(ErrorMessage = "Courriel invalide")]
-        [DataType(DataType.EmailAddress)]
         public string Courriel { get; set; }
 
         [Required(ErrorMessage = "Chmaps requis")]
         [StringLength(20, ErrorMessage = "Seulement 20 caractères")]
-        [EmailAddress(ErrorMessage = "Password invalide")]
         [DataType(DataType.Password)]
         public string MotDePasse { get; set; }
 

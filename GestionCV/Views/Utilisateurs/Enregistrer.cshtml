@@ -1,0 +1,44 @@
+﻿@model GestionCV.Models.Utilisateur
+
+@{
+    ViewData["Title"] = "Enregistrer";
+}
+
+<div class="formulaire">
+    <h5>Enregistrer l'utilisateur</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Enregistrer">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Courriel" id="Courriel" type="email" class="validate" />
+                        <label for="Courriel">Courriel</label>
+                        <span asp-validation-for="Courriel" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="MotDePasse" id="MotDePasse" type="password" class="validate" />
+                        <label for="MotDePasse">Mot de passe</label>
+                        <span asp-validation-for="MotDePasse" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                
+                <div class="row">
+                    <input type="submit" value="Enregistrer" class="btn btn-small green darken-1" />
+                    <a asp-action="Login" asp-controller="Utilisateurs">Deja Enregistrée</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
