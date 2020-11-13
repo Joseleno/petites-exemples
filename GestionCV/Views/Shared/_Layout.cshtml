@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GestionCV</title>
+
+    <environment include="Development">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/materialize/css/materialize.css" rel="stylesheet" />
+        <link href="~/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
+
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/materialize/css/materialize.css" rel="stylesheet" />
+        <link href="~/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav class="orange lighten-2">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><i class="material-icons center-align">library_books</i>Gestion de CV</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Utilisateurs" asp-action="Enregistrer">Utilisateurs</a></li>
+                        <li><a asp-controller="Utilisateurs" asp-action="Login">Entrer</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Curriculums" asp-action="Enregistrer">Utilisateurs</a></li>
+                        <li><a asp-controller="InformationsLogin" asp-action="Login">Login</a></li>
+                        <li><a asp-controller="Utilisateurs" asp-action="Logout">Fermer</a></li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </div>
+    @*<partial name="_CookieConsentPartial" />*@
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2020 - GestionCV</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
+        <script src="~/materialize/js/materialize.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+
+        <script src="~/materialize/js/materialize.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
