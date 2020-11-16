@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GestionCV.Models.InformationLogin>
+
+@{
+    ViewData["Title"] = "Mes informations de connexion";
+}
+
+<div class="tableauLogin container">
+    <h5>Mes informations de connexion</h5>
+
+    <a class="btn btn-small orange darken-4" asp-controller="InformationsLogin" asp-action="GetInformationLoginCSV">Exporter au format CSV</a>&nbsp; | &nbsp;
+    <a asp-action="Index" asp-controller="Curriculums">Retour à liste de CVs</a>
+    <div class="infoTableau">
+        <table class="table table-striped highlight centered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdresseIp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hour)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Utilisateur)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdresseIp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Utilisateur.Courriel)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -28,12 +28,12 @@
                     @if (!User.Identity.IsAuthenticated)
                     {
                         <li><a asp-controller="Utilisateurs" asp-action="Enregistrer">Utilisateurs</a></li>
-                        <li><a asp-controller="Utilisateurs" asp-action="Login">Entrer</a></li>
+                        <li><a asp-controller="Utilisateurs" asp-action="Login">Login</a></li>
                     }
                     else
                     {
                         <li><a asp-controller="Curriculums" asp-action="Enregistrer">Utilisateurs</a></li>
-                        <li><a asp-controller="InformationsLogin" asp-action="Login">Login</a></li>
+                        <li><a asp-controller="InformationsLogin" asp-action="Index">Mes informations</a></li>
                         <li><a asp-controller="Utilisateurs" asp-action="Logout">Fermer</a></li>
                     }
                 </ul>

@@ -1,6 +1,7 @@
 ﻿using GestionCV.Enums;
 using GestionCV.Mapping;
 using Microsoft.EntityFrameworkCore;
+using GestionCV.Models;
 
 namespace GestionCV.Models
 {
@@ -30,5 +31,7 @@ namespace GestionCV.Models
             modelBuilder.ApplyConfiguration(new UtilisateurMap());
 
         }
+
+        public DbSet<GestionCV.Models.InformationLogin> InformationLogin { get; set; }
     }
 }
