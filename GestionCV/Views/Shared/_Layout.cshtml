@@ -23,7 +23,7 @@
     <div class="navbar-fixed">
         <nav class="orange lighten-2">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo"><i class="material-icons center-align">library_books</i>Gestion de CV</a>
+                <a asp-controller="Utilisateurs" asp-action="Enregistrer" class="brand-logo"><i class="material-icons center-align">library_books</i>Gestion de CV</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if (!User.Identity.IsAuthenticated)
                     {

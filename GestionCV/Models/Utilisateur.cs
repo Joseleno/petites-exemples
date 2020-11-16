@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace GestionCV.Models
         [Required(ErrorMessage = "Chmaps requis")]
         [StringLength(50, ErrorMessage = "Seulement 50 caractères")]
         [EmailAddress(ErrorMessage = "Courriel invalide")]
+        [Remote("UtilisateurExist", "Utilisateurs")]
         public string Courriel { get; set; }
 
         [Required(ErrorMessage = "Chmaps requis")]
