@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GestionCV.Oultils
 {
@@ -19,11 +16,12 @@ namespace GestionCV.Oultils
                 {
                     sb.Append(hash[i].ToString("X2"));
                 }
-                return sb.ToString(); 
+                return sb.ToString();
             }
             catch (Exception)
             {
-                return null;            }
+                return null;
+            }
         }
 
     }

@@ -1,18 +1,17 @@
-﻿using GestionCV.Enums;
-using GestionCV.Mapping;
+﻿using GestionCV.Mapping;
 using Microsoft.EntityFrameworkCore;
-using GestionCV.Models;
 
 namespace GestionCV.Models
 {
     public class Context : DbContext
     {
         public DbSet<Curriculum> Curriculum { get; set; }
-        public DbSet<Langue> Langue { get; set; }
+        public DbSet<Langue> Langues { get; set; }
         public DbSet<TypeCours> TypeCours { get; set; }
         public DbSet<Formation> Formation { get; set; }
         public DbSet<Objectif> Objectif { get; set; }
         public DbSet<Utilisateur> Utilisateur { get; set; }
+        public DbSet<ExperienceProfessionnelle> ExperiencesProfissionelles { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {
@@ -32,6 +31,6 @@ namespace GestionCV.Models
 
         }
 
-        public DbSet<GestionCV.Models.InformationLogin> InformationLogin { get; set; }
+        public DbSet<InformationLogin> InformationLogin { get; set; }
     }
 }

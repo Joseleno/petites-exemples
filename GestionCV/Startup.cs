@@ -72,14 +72,14 @@ namespace GestionCV
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            RotativaConfiguration.Setup(env);
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Utilisateurs}/{action=Enregistrer}/{id?}");
             });
+
+            RotativaConfiguration.Setup(env);
         }
 
     }

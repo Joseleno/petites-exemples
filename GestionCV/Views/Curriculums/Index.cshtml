@@ -14,23 +14,23 @@
     <table class="table striped hoverable highlight">
         <thead>
             <tr>
-                <th>
+                <th width="60%">
                     @Html.DisplayNameFor(model => model.Nom)
                 </th>
-                <th></th>
+                <th width="40%" ></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    <td width="60%">
                         @Html.DisplayFor(modelItem => item.Nom)
                     </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CurriculumId" class="btn-floating btn-small blue darken-4"><i class="material-icons">edit</i></a> |
-                        <a asp-action="Details" asp-route-id="@item.CurriculumId" class="btn-floating btn-small deep-purple darken-4"><i class="material-icons">zoom_in</i></a> |
-                        <a onclick="AfficherModal(@item.CurriculumId)" class="btn-floating btn-small red darken-4 modal-trigger"><i class="material-icons">delete_forever</i></a>
+                    <td width="40%">
+                        <a asp-action="Edit" asp-route-id="@item.CurriculumId" class="btn-small blue darken-2">Éditer</a> |
+                        <a asp-action="Details" asp-route-id="@item.CurriculumId" class="btn-small orange darken-2">Details</a> |
+                        <a onclick="AfficherModal(@item.CurriculumId)" class="btn-small red darken-4 modal-trigger">Suprimmer</a>
                     </td>
                 </tr>
             }

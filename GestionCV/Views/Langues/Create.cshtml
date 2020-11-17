@@ -1,0 +1,46 @@
+﻿@model GestionCV.Models.Langue
+@using GestionCV.Enums
+
+@{
+    ViewData["Title"] = "Nouvelle langue";
+}
+
+<div class="formulaire">
+    <h4>Nouvelle langue</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <input asp-for="CurriculumId" type="hidden" />
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Nom" type="text" id="Nom" class="validate" />
+                        <label for="Nom">Langue</label>
+                        <span asp-validation-for="Nom" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select asp-for="Niveau" type="text" id="Niveau" class="browser-default validate" asp-items="Html.GetEnumSelectList<Niveau>()"></select>
+                        <span asp-validation-for="Niveau" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
+                    <a asp-action="Details" asp-controller="Curriculums" asp-route-id="@Model.CurriculumId" class="btn btn-small orange lighten-1">Retour</a>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
