@@ -43,13 +43,6 @@ namespace GestionCV
             //Ajouter le DI
             services.AddSingleton<IMd5, MD5Hash>();
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -79,14 +72,14 @@ namespace GestionCV
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            RotativaConfiguration.Setup(env);
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Utilisateurs}/{action=Enregistrer}/{id?}");
             });
+
+            RotativaConfiguration.Setup(env);
         }
 
     }

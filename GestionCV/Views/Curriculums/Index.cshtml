@@ -1,41 +1,74 @@
 ﻿@model IEnumerable<GestionCV.Models.Curriculum>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CVs enregistrées";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Utilisateur)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Utilisateur.Courriel)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CurriculumId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CurriculumId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CurriculumId">Delete</a>
-            </td>
-        </tr>
+<div class="formulaire">
+    <h5>CVs enregistrées</h5>
+
+    <p>
+        <a asp-action="Create" class="btn btn-small orange darken-2">Nouveau CV</a>
+    </p>
+    <table class="table striped hoverable highlight">
+        <thead>
+            <tr>
+                <th width="60%">
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th width="40%" ></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="60%">
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td width="40%">
+                        <a asp-action="Edit" asp-route-id="@item.CurriculumId" class="btn-small blue darken-2">Éditer</a> |
+                        <a asp-action="Details" asp-route-id="@item.CurriculumId" class="btn-small orange darken-2">Details</a> |
+                        <a onclick="AfficherModal(@item.CurriculumId)" class="btn-small red darken-4 modal-trigger">Suprimmer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmer la suppression</h4>
+        <p>Voulez-vous confirmer la suppression?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect btn orange accent-4">Pas maintenant</a>
+        <a class="modal-close waves-effect btn red accent-4 btnOui">Oui</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(".modal").modal();
+
+        function AfficherModal(id) {
+            $("#modal1").modal("open");
+
+            $(".btnOui").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/Curriculums/Delete",
+                    data: { id: id },
+                    success: function () {
+                        alert("CV supprimé avec succès");
+                        location.reload();
+                        $(".modal").modal('close');
+                    }
+
+                });
+            })
+        }
+    </script>
 }
-    </tbody>
-</table>

@@ -1,0 +1,64 @@
+﻿@model GestionCV.Models.Formation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="formulaire">
+    <h4>Nouveau formation</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="FormationId" />
+                <input asp-for="CurriculumId" type="hidden" />
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select asp-for="TypeCoursId" type="text" id="TypeCoursId" class="browser-default validate" asp-items="ViewBag.TypeCoursId"></select>
+                        <span asp-validation-for="TypeCoursId" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Institution" type="text" id="Institution" class="validate" />
+                        <label for="Institution">Institution</label>
+                        <span asp-validation-for="Institution" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="AnneeDebut" id="AnneeDebut" class="validate" />
+                        <label for="AnneeDebut">Annee Debut</label>
+                        <span asp-validation-for="AnneeDebut" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="AnneeFin" id="AnneeFin" class="validate" />
+                        <label for="AnneeFin">Annee Fin</label>
+                        <span asp-validation-for="AnneeFin" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="NomCours" type="text" id="NomCours" class="validate" />
+                        <label for="NomCours">Nom Cours</label>
+                        <span asp-validation-for="NomCours" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
+                    <a asp-action="Details" asp-controller="Curriculums" asp-route-id="@Model.CurriculumId" class="btn btn-small orange lighten-1">Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<GestionCV.Models.Formation>
+
+
+@foreach (var i in Model)
+{
+    <li class="collection-item row">
+        <div class="valign-wrapper col s10">
+            @Html.DisplayFor(modelItem => i.TypeCours.Type) en @Html.DisplayFor(modelItem => i.NomCours)
+            @Html.DisplayFor(modelItem => i.Institution), @Html.DisplayFor(modelItem => i.AnneeDebut) jusqu'à @Html.DisplayFor(modelItem => i.AnneeFin)
+        </div>
+
+        <div class="col s2 right">
+            <a asp-controller="Formations" asp-action="Edit" asp-route-id="@i.FormationId" class="btn-floating btn-small blue darken-4"><i class="material-icons">edit</i></a>
+            <a onclick="AfficherModal(@i.FormationId, 'Formations')" class="btn-floating btn-small red darken-4"><i class="material-icons">delete_forever</i></a>
+        </div>
+    </li>
+     
+}

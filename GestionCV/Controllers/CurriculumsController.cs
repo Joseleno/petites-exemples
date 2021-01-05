@@ -1,9 +1,11 @@
 ﻿using GestionCV.Models;
+using GestionCV.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Rotativa.AspNetCore;
 
 namespace GestionCV.Controllers
 {
@@ -17,9 +19,17 @@ namespace GestionCV.Controllers
         }
 
         // GET: Curriculums
+
         public async Task<IActionResult> Index()
         {
-            var context = _context.Curriculum.Include(c => c.Utilisateur);
+            var utilisateurId = HttpContext.Session.GetInt32("UtilisateurId");
+            if (utilisateurId == null)
+            {
+                return RedirectToAction("Login", "Utilisateurs");
+            }
+
+
+            var context = _context.Curriculum.Include(c => c.Utilisateur).Where(c => c.UtilisateurId == utilisateurId);
             return View(await context.ToListAsync());
         }
 
@@ -45,7 +55,7 @@ namespace GestionCV.Controllers
         // GET: Curriculums/Create
         public IActionResult Create()
         {
-            ViewData["UtilisateurId"] = new SelectList(_context.Utilisateur, "UtilisateurId", "Courriel");
+
             return View();
         }
 
@@ -56,13 +66,19 @@ namespace GestionCV.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CurriculumId,Nom,UtilisateurId")] Curriculum curriculum)
         {
+            if (HttpContext.Session.GetInt32("UtilisateurId") == null)
+            {
+                return RedirectToAction("Login", "Utilisateurs");
+            }
+            curriculum.UtilisateurId = int.Parse(HttpContext.Session.GetInt32("UtilisateurId").ToString());
+
             if (ModelState.IsValid)
             {
                 _context.Add(curriculum);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Utilisateur, "UtilisateurId", "Courriel", curriculum.UtilisateurId);
+
             return View(curriculum);
         }
 
@@ -79,7 +95,7 @@ namespace GestionCV.Controllers
             {
                 return NotFound();
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Utilisateur, "UtilisateurId", "Courriel", curriculum.UtilisateurId);
+
             return View(curriculum);
         }
 
@@ -94,6 +110,7 @@ namespace GestionCV.Controllers
             {
                 return NotFound();
             }
+            curriculum.UtilisateurId = int.Parse(HttpContext.Session.GetInt32("UtilisateurId").ToString());
 
             if (ModelState.IsValid)
             {
@@ -115,43 +132,37 @@ namespace GestionCV.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Utilisateur, "UtilisateurId", "Courriel", curriculum.UtilisateurId);
-            return View(curriculum);
-        }
-
-        // GET: Curriculums/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var curriculum = await _context.Curriculum
-                .Include(c => c.Utilisateur)
-                .FirstOrDefaultAsync(m => m.CurriculumId == id);
-            if (curriculum == null)
-            {
-                return NotFound();
-            }
 
             return View(curriculum);
         }
 
         // POST: Curriculums/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost]
+        public async Task<JsonResult> Delete(int id)
         {
             var curriculum = await _context.Curriculum.FindAsync(id);
             _context.Curriculum.Remove(curriculum);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(curriculum.Nom + " a été supprimmé avec succès");
         }
 
+        
         private bool CurriculumExists(int id)
         {
             return _context.Curriculum.Any(e => e.CurriculumId == id);
+        }
+
+        public IActionResult AfficherPDF() 
+        {
+            var id = HttpContext.Session.GetInt32("UtilisateurId");
+
+            CurriculumViewModel curriculum = new CurriculumViewModel();
+            curriculum.Objectifs = _context.Objectif.Where(o=>o.Curriculum.UtilisateurId == id).ToList();
+            curriculum.Formations = _context.Formation.Where(f => f.Curriculum.UtilisateurId == id).ToList();
+            curriculum.ExperiencseProfessionnelles = _context.ExperiencesProfissionelles.Where(ep => ep.Curriculum.UtilisateurId == id).ToList();
+            curriculum.Langues = _context.Langues.Where(l => l.Curriculum.UtilisateurId == id).ToList();
+
+            return new ViewAsPdf("PDF", curriculum) { FileName = "CV.pdf"};
         }
     }
 }

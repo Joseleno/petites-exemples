@@ -1,35 +1,31 @@
 ﻿@model GestionCV.Models.Curriculum
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nouveau CV";
 }
 
-<h2>Create</h2>
 
-<h4>Curriculum</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nom" class="control-label"></label>
-                <input asp-for="Nom" class="form-control" />
-                <span asp-validation-for="Nom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UtilisateurId" class="control-label"></label>
-                <select asp-for="UtilisateurId" class ="form-control" asp-items="ViewBag.UtilisateurId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+<div class="formulaire">
+    <h4>Nouveau CV</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Nom" id="Nom" class="validate" />
+                        <label for="Nom">CV</label>
+                        <span asp-validation-for="Nom" class="red-text darken-3"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
+                    <a asp-action="Index" class="btn btn-small orange lighten-1">Retour</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

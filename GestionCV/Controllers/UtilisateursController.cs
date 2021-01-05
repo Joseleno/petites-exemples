@@ -85,7 +85,7 @@ namespace GestionCV.Controllers
                 int utilisateurId = _context.Utilisateur.Where(u => u.Courriel.Equals(login.Courriel) && u.MotDePasse.Equals(_md.GererHash(login.MotDePasse))).Select(u => u.UtilisateurId).Single();
 
                 EnregistrerInformationLogin(utilisateurId);
-                
+
                 await _context.SaveChangesAsync();
 
                 HttpContext.Session.SetInt32("UtilisateurId", utilisateurId);
@@ -119,7 +119,23 @@ namespace GestionCV.Controllers
 
             _context.Add(informationLogin);
 
+        }
 
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Utilisateurs");
+        }
+
+        public JsonResult UtilisateurExist(string courriel) 
+        {
+            if (!_context.Utilisateur.Any(c => c.Courriel.Equals(courriel)))
+            {
+                return Json(true);
+            }
+            return Json("Courriel déjà inscrit");
+                
         }
 
     }

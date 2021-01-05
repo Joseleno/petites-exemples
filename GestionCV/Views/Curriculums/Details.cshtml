@@ -1,30 +1,82 @@
 ﻿@model GestionCV.Models.Curriculum
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "CV: " + @Model.Nom;
 }
 
-<h2>Details</h2>
+
 
 <div>
-    <h4>Curriculum</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Utilisateur)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Utilisateur.Courriel)
-        </dd>
-    </dl>
+    <h5>CV @Model.Nom</h5>
+    <a class="btn red darken-4" asp-controller="Curriculums" asp-action="AfficherPDF">AAfficher PDF</a>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CurriculumId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Objectifs <a asp-action="Create" asp-controller="Objectifs" asp-route-id="@Model.CurriculumId" class="btn btn-small orange darken-2"><i class="material-icons">add</i></a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("Objectifs", Model.CurriculumId)
+    </ul>
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Formations <a asp-action="Create" asp-controller="Formations" asp-route-id="@Model.CurriculumId" class="btn btn-small orange darken-2"><i class="material-icons">add</i></a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("Formations", Model.CurriculumId)
+    </ul>
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Experences Profissionelles <a asp-action="Create" asp-controller="ExperiencesProfessionnelles" asp-route-id="@Model.CurriculumId" class="btn btn-small orange darken-2"><i class="material-icons">add</i></a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("ExperiencesProfessionnelles", Model.CurriculumId)
+    </ul>
+
+    <ul class="collection with-header">
+        <li class="collection-header">
+            <h5>
+                Langues <a asp-action="Create" asp-controller="Langues" asp-route-id="@Model.CurriculumId" class="btn btn-small orange darken-2"><i class="material-icons">add</i></a>
+            </h5>
+        </li>
+        @await Component.InvokeAsync("Langues", Model.CurriculumId)
+    </ul>
 </div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmer la suppression</h4>
+        <p>Voulez-vous confirmer la suppression?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect btn orange accent-4">Pas maintenant</a>
+        <a class="modal-close waves-effect btn red accent-4 btnOui">Oui</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(".modal").modal();
+
+        function AfficherModal(id, ob) {
+            $("#modal1").modal("open");
+            var url = "/" + ob + "/Delete";
+            $(".btnOui").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    data: { id: id },
+                    success: function () {
+                        alert("CV supprimé avec succès");
+                        location.reload();
+
+                    }
+
+                });
+            })
+        }
+    </script>
+}

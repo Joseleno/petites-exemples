@@ -1,0 +1,72 @@
+﻿@model GestionCV.ViewModels.CurriculumViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CV</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/materialize/css/materialize.css" rel="stylesheet" />
+    <link href="~/materialize/css/materialize.min.css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+</head>
+<body>
+    <h5>Objectifs</h5>
+    <p>
+        <ul>
+            @foreach (var i in Model.Objectifs)
+            {
+                <li>
+                    @i.Description
+                </li>
+            }
+        </ul>
+    </p>
+    <hr />
+
+    <h5>Formations</h5>
+    <p>
+        <ul>
+            @foreach (var i in Model.Formations)
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => i.TypeCours.Type) en @Html.DisplayFor(modelItem => i.NomCours)
+                    @Html.DisplayFor(modelItem => i.Institution), @Html.DisplayFor(modelItem => i.AnneeDebut) jusqu'à @Html.DisplayFor(modelItem => i.AnneeFin)
+                </li>
+            }
+        </ul>
+    </p>
+    <hr />
+    <h5>Experiences professionelles</h5>
+    <p>
+        <ul>
+            @foreach (var i in Model.ExperiencseProfessionnelles)
+            {
+            <li>
+                @Html.DisplayFor(modelItem => i.TitrePoste) en @Html.DisplayFor(modelItem => i.Entreprise)
+                @Html.DisplayFor(modelItem => i.AnneeDebut) jusqu'à @Html.DisplayFor(modelItem => i.AnneeFin)
+                <br />
+                @Html.DisplayFor(modelItem => i.Activites)
+            </li>
+
+            }
+        </ul>
+    </p>
+    <hr />
+    <h5>Langues</h5>
+    <p>
+        <ul>
+            @foreach (var i in Model.Langues)
+            {
+                <li>
+                    @Html.DisplayFor(modelItem => i.Niveau) en @Html.DisplayFor(modelItem => i.Nom)
+                </li>
+            }
+        </ul>
+    </p>
+</body>
+</html>

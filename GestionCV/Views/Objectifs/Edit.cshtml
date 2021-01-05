@@ -1,0 +1,30 @@
+﻿@model GestionCV.Models.Objectif
+
+@{
+    ViewData["Title"] = "Misse à jour Objectif";
+}
+
+<div class="formulaire">
+    <h5>Misse à jour Objectif</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="ObjectifId" type="hidden" />
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input asp-for="Description" type="text" id="Description" class="validate" />
+                        <label for="Description">Description</label>
+                        <span asp-validation-for="Description" class="red-text darken-3"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
+                    <a asp-action="Details" asp-controller="Curriculums" asp-route-id="@Model.CurriculumId" class="btn btn-small orange lighten-1">Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
