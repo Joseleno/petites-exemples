@@ -6,21 +6,13 @@
 
 
 <div class="formulaire">
-    <h4>Mise à jour @Model.Nom</h4>
+    <h5>@ViewData["Title"]</h5>
     <hr />
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="CurriculumId" />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input asp-for="Nom" id="Nom" class="validate" />
-                        <label for="Nom">CV</label>
-                        <span asp-validation-for="Nom" class="red-text darken-3"></span>
-                    </div>
-                </div>
+                <partial name="_DonneesFormulaire" />
                 <div class="row">
                     <input type="submit" value="Confirmer" class="btn btn-small orange darken-2" />
                     <a asp-action="Index" class="btn btn-small orange lighten-1">Retour</a>
