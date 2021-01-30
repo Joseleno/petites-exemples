@@ -3,8 +3,7 @@
     <title>@ViewData["Title"] Application de Base</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link href="~/css/site_bundle.min.css" rel="stylesheet" />
     </environment>
 
     <environment exclude="Development">
@@ -13,7 +12,10 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
+        <link href="~/css/site_bundle.min.css" rel="stylesheet" />
     </environment>
+
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
 </head>
 
 <body>
@@ -42,13 +44,13 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div>
+        <div class="container">
         </div>
     </footer>
 
     <environment include="Development">
-        <script src="~/lib/jquery/jquery.js"></script>
-        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="~/js/site_bundle.min.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -63,8 +65,7 @@
                 crossorigin="anonymous"
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBK81J/PR7CA4=">
         </script>
+        <script src="~/js/site_bundle.min.js"></script>
     </environment>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
