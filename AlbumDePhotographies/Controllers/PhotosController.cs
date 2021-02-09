@@ -6,27 +6,48 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AlbumDePhotographies.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using System.IO;
 
 namespace AlbumDePhotographies.Controllers
 {
     public class PhotosController : Controller
     {
         private readonly Context _context;
-        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public PhotosController(Context context, IHostingEnvironment hostingEnvironment)
+        public PhotosController(Context context)
         {
             _context = context;
-            _hostingEnvironment = hostingEnvironment;
         }
 
-       // GET: Photos/Create
-        public IActionResult Create(int id)
+        // GET: Photos
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Albums = _context.Albums.FirstOrDefault(x => x.AlbumId == id);
+            var context = _context.Photos.Include(p => p.Album);
+            return View(await context.ToListAsync());
+        }
+
+        // GET: Photos/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var photo = await _context.Photos
+                .Include(p => p.Album)
+                .FirstOrDefaultAsync(m => m.PhotoId == id);
+            if (photo == null)
+            {
+                return NotFound();
+            }
+
+            return View(photo);
+        }
+
+        // GET: Photos/Create
+        public IActionResult Create()
+        {
+            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "Nom");
             return View();
         }
 
@@ -35,28 +56,104 @@ namespace AlbumDePhotographies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PhotoId,Lien,AlbumId")] Photo photo, IFormFile ficher)
+        public async Task<IActionResult> Create([Bind("PhotoId,Lien,AlbumId")] Photo photo)
         {
             if (ModelState.IsValid)
             {
-                var lienUpload = Path.Combine(_hostingEnvironment.WebRootPath, "Photos");
-
-                if (ficher != null)
-                {
-                    using (FileStream fileStream = new FileStream(Path.Combine(lienUpload, ficher.FileName), FileMode.Create))
-                    {
-                        await ficher.CopyToAsync(fileStream);
-                        photo.Lien = "~/Photos/" + ficher.FileName;
-                    }
-                }
-
                 _context.Add(photo);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details/", "Albums", new { id = photo.AlbumId });
+                return RedirectToAction(nameof(Index));
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "Nom", photo.AlbumId);
             return View(photo);
         }
 
+        // GET: Photos/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var photo = await _context.Photos.FindAsync(id);
+            if (photo == null)
+            {
+                return NotFound();
+            }
+            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "Nom", photo.AlbumId);
+            return View(photo);
+        }
+
+        // POST: Photos/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("PhotoId,Lien,AlbumId")] Photo photo)
+        {
+            if (id != photo.PhotoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(photo);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PhotoExists(photo.PhotoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "Nom", photo.AlbumId);
+            return View(photo);
+        }
+
+        // GET: Photos/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var photo = await _context.Photos
+                .Include(p => p.Album)
+                .FirstOrDefaultAsync(m => m.PhotoId == id);
+            if (photo == null)
+            {
+                return NotFound();
+            }
+
+            return View(photo);
+        }
+
+        // POST: Photos/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var photo = await _context.Photos.FindAsync(id);
+            _context.Photos.Remove(photo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool PhotoExists(int id)
+        {
+            return _context.Photos.Any(e => e.PhotoId == id);
+        }
     }
 }

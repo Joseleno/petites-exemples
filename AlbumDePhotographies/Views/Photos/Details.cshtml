@@ -1,0 +1,30 @@
+﻿@model AlbumDePhotographies.Models.Photo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Photo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lien)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lien)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Album)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Album.Nom)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PhotoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

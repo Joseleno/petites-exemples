@@ -6,7 +6,6 @@ namespace AppDeBase.UI.Site.Extensions
     public class CourrielTagHelper : TagHelper
     {
         public string CourrielDomaine { get; set; } = "appdebase.com";
-
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "a";
