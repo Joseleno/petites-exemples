@@ -12653,17 +12653,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josel\\.nuget\\packages\\": {}
+    "C:\\Users\\josel\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josel\\source\\repos\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
+      "projectUniqueName": "C:\\Users\\josel\\source\\repos\\Joseleno\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
       "projectName": "AlbumDePhotographies",
-      "projectPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
+      "projectPath": "C:\\Users\\josel\\source\\repos\\Joseleno\\petites-exemples\\AlbumDePhotographies\\AlbumDePhotographies.csproj",
       "packagesPath": "C:\\Users\\josel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josel\\source\\repos\\petites-exemples\\AlbumDePhotographies\\obj\\",
+      "outputPath": "C:\\Users\\josel\\source\\repos\\Joseleno\\petites-exemples\\AlbumDePhotographies\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\josel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -12677,6 +12681,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "projectReferences": {}
         }
       },
@@ -12688,6 +12693,7 @@
     },
     "frameworks": {
       "netcoreapp2.1": {
+        "targetAlias": "netcoreapp2.1",
         "dependencies": {
           "Microsoft.AspNetCore": {
             "target": "Package",
@@ -12755,7 +12761,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20614.14\\RuntimeIdentifierGraph.json"
       }
     }
   }
