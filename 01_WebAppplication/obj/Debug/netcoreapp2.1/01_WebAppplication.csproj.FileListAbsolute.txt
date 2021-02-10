@@ -1,6 +1,0 @@
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.csprojAssemblyReference.cache
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.AssemblyInfoInputs.cache
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.AssemblyInfo.cs
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.csproj.CoreCompileInputs.cache
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.RazorAssemblyInfo.cache
-C:\Users\josel\source\repos\petites-exemples\01_WebAppplication\obj\Debug\netcoreapp2.1\01_WebAppplication.RazorAssemblyInfo.cs
